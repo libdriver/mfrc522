@@ -1,0 +1,26 @@
+var structmfrc522__handle__s =
+[
+    [ "debug_print", "structmfrc522__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b", null ],
+    [ "delay_ms", "structmfrc522__handle__s.html#a406c9433252b7366de417b7a60915c81", null ],
+    [ "iic_addr", "structmfrc522__handle__s.html#ae4fb63dc1b166464d5da3aa753b0805a", null ],
+    [ "iic_deinit", "structmfrc522__handle__s.html#af6963bbad902ca6e43942b48c07986c3", null ],
+    [ "iic_init", "structmfrc522__handle__s.html#a8826dd07625f8d90859ce9bd09628d61", null ],
+    [ "iic_read", "structmfrc522__handle__s.html#af4ef726288b88f51a846483803a1249b", null ],
+    [ "iic_spi_uart", "structmfrc522__handle__s.html#a8fbe3a09f7da8820f0b60a3e068dce70", null ],
+    [ "iic_write", "structmfrc522__handle__s.html#adca3ee7a793bbf510d5267daf0fcf1c5", null ],
+    [ "inited", "structmfrc522__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f", null ],
+    [ "irq_flag", "structmfrc522__handle__s.html#a2949ac2f747d57d51383be6cfd7f23ea", null ],
+    [ "receive_callback", "structmfrc522__handle__s.html#a820f98c864ba6331d88f2106800551e7", null ],
+    [ "reset_gpio_deinit", "structmfrc522__handle__s.html#a69c42ff05fc69e3f1621f3c0347a840b", null ],
+    [ "reset_gpio_init", "structmfrc522__handle__s.html#aa264e23f5c4ddd7a9bfa5cd9e387e013", null ],
+    [ "reset_gpio_write", "structmfrc522__handle__s.html#ae88962c62483f005e4930e9ca4b00981", null ],
+    [ "spi_deinit", "structmfrc522__handle__s.html#a9adb2481330acacfd7f6a04ce3310fab", null ],
+    [ "spi_init", "structmfrc522__handle__s.html#a30df505f4bd8bc8754fc0a36cfbe46d6", null ],
+    [ "spi_read", "structmfrc522__handle__s.html#a4355763dd3841598f34aea0b059031ce", null ],
+    [ "spi_write", "structmfrc522__handle__s.html#a53f6c43b3a975d2569e84643ad549413", null ],
+    [ "uart_deinit", "structmfrc522__handle__s.html#a57faa7438fdabb6134dabb8b386707a8", null ],
+    [ "uart_flush", "structmfrc522__handle__s.html#a1926b171e2786f52634d78953df6612a", null ],
+    [ "uart_init", "structmfrc522__handle__s.html#ad6e221373f53cf56fdeec9c64bbc6423", null ],
+    [ "uart_read", "structmfrc522__handle__s.html#a9f6681bb2ac30875d94d016ad0137ab2", null ],
+    [ "uart_write", "structmfrc522__handle__s.html#a280c8d239a837172fc2fee6eaec7edff", null ]
+];
