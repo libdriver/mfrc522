@@ -13,8 +13,11 @@ Der MFRC522 ist ein hochintegrierter Lese-/Schreib-IC für kontaktlose Kommunika
 Libdriver MFRC522 ist der voll funktionsfähige Treiber von MFRC522, der von LibDriver gestartet wurde. Er bietet die Funktion der kontaktlosen Kommunikation, CRC-Berechnung, Zufallsgenerierung und so weiter. LibDriver ist MISRA-konform.
 
 LibDriver MFRC522 bietet den vollen Funktionstreiber von MFRC522, enthält jedoch nicht MIFARE Classic, MIFARE Ultralight, NTAG21x und andere Treiber.
+
 MIFARE Classic-Treiber finden Sie unter https://github.com/hepingood/mifare_classic
+
 MIFARE Ultralight-Treiber finden Sie unter https://github.com/hepingood/mifare_ultralight
+
 Das NTAG21x-Laufwerk kann auf https://github.com/hepingood/ntag21x verwiesen werden
 
 ### Inhaltsverzeichnis

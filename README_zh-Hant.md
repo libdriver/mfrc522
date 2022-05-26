@@ -12,8 +12,11 @@ MFRC522是一種高度集成的讀寫器IC，用於13.56 MHz的非接觸式通�
 LibDriver MFRC522是LibDriver推出的MFRC522全功能驅動，該驅動提供非接觸通信、CRC計算、亂數生成等功能並且它符合MISRA標準。
 
 LibDriver MFRC522提供MFRC522的全功能驅動，但不包括MIFARE Classic，MIFARE Ultralight和NTAG21x等驅動。
+
 MIFARE Classic驅動可參攷 https://github.com/hepingood/mifare_classic
+
 MIFARE Ultralight驅動可參攷 https://github.com/hepingood/mifare_ultralight
+
 NTAG21x驅動可參攷 https://github.com/hepingood/ntag21x
 
 ### 目錄

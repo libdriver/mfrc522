@@ -13,8 +13,11 @@ MFRC522は、13.56MHzでの非接触通信用の高度に統合されたリー�
 Libdriver MFRC522は、LibDriverによって起動されたMFRC522の全機能ドライバーであり、非接触通信、crc計算、ランダム生成などの機能を提供します。 LibDriverはMISRAに準拠しています。
 
 LibDriver MFRC522は、MFRC522の全機能ドライバーを提供しますが、MIFARE Classic、MIFARE Ultralight、NTAG21xおよびその他のドライバーは含まれていません。
+
 MIFARE Classicドライバーは、https://github.com/hepingood/mifare_classicを参照できます。
+
 MIFARE Ultralightドライバーは、https://github.com/hepingood/mifare_ultralightを参照できます。
+
 NTAG21xドライブはhttps://github.com/hepingood/ntag21xを参照できます
 
 ### 目次
