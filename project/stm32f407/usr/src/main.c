@@ -638,7 +638,7 @@ uint8_t mfrc522(uint8_t argc, char **argv)
                         
                         return 1;
                     }
-                    for (i = 0; i < 25; i++)
+                    for (i = 0; i < out_len; i++)
                     {
                         mfrc522_interface_debug_print("0x%02X ", out_buf[i]);
                     }
@@ -687,7 +687,7 @@ uint8_t mfrc522(uint8_t argc, char **argv)
                         
                         return 1;
                     }
-                    for (i = 0; i < 25; i++)
+                    for (i = 0; i < out_len; i++)
                     {
                         mfrc522_interface_debug_print("0x%02X ", out_buf[i]);
                     }
@@ -766,7 +766,7 @@ uint8_t mfrc522(uint8_t argc, char **argv)
                         
                         return 1;
                     }
-                    for (i = 0; i < 25; i++)
+                    for (i = 0; i < out_len; i++)
                     {
                         mfrc522_interface_debug_print("0x%02X ", out_buf[i]);
                     }

@@ -937,9 +937,24 @@ uint8_t mfrc522_basic_transceiver(uint8_t *in_buf, uint8_t in_len, uint8_t *out_
     /* authentication key a or key b */
     else if ((in_len == 12) && ((in_buf[0] == 0x60) || (in_buf[0] == 0x61)))
     {
+        uint8_t status;
+        
         /* transceiver */
         res = mfrc522_transceiver(&gs_handle, MFRC522_COMMAND_MF_AUTHENT, in_buf, in_len, out_buf, out_len, &err, 1000);
         if (res != 0)
+        {
+            return 1;
+        }
+        
+        /* get the mfcrypto1 on bit */
+        res = mfrc522_get_status2(&gs_handle, &status);
+        if (res != 0)
+        {
+            return 1;
+        }
+        
+        /* check the result */
+        if ((status & 0x08) == 0)
         {
             return 1;
         }
