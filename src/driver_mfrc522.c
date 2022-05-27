@@ -1111,8 +1111,6 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
     if ((command == MFRC522_COMMAND_TRANSCEIVE) && ((*out_len) != 0))               /* if transceive and need get from fifo */
     {
         uint8_t level;
-        uint8_t bits;
-        uint8_t l; 
         
         res = a_mfrc522_read(handle, MFRC522_REG_FIFO_LEVEL, &level, 1);            /* read level */
         if (res != 0)                                                               /* check the result */
@@ -1121,27 +1119,8 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
             
             return 1;                                                               /* return error */
         }
-        res = a_mfrc522_read(handle, MFRC522_REG_CONTROL, &prev, 1);                /* read control */
-        if (res != 0)                                                               /* check the result */
-        {
-            handle->debug_print("mfrc522: read control failed.\n");                 /* read control failed */
-            
-            return 1;                                                               /* return error */
-        }
-        bits = prev & (0x7 << 0);                                                   /* set bits */
-        if (bits != 0)                                                              /* check the bits */
-        {
-            l = (level - 1) * 8 + bits;                                             /* set the length */
-        }
-        else
-        {
-            l = level * 8;                                                          /* set the length */
-        }
-        if (level == 0)                                                             /* if 0 */
-        {
-            l = 1;                                                                  /* set the length 1 */
-        }
-        *out_len = l > (*out_len) ? (*out_len) : l;                                 /* set the output length */
+
+        *out_len = level > (*out_len) ? (*out_len) : level;                         /* set the output length */
         for (i = 0; i < (*out_len); i++)                                            /* loop */
         {
             res = a_mfrc522_read(handle, MFRC522_REG_FIFO_DATA, out_buf + i, 1);    /* read data */
