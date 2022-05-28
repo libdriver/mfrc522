@@ -308,6 +308,7 @@ void mfrc522_interface_delay_ms(uint32_t ms)
  */
 void mfrc522_interface_debug_print(const char *const fmt, ...)
 {
+#ifndef NO_DEBUG
     char str[256];
     uint8_t len;
     va_list args;
@@ -319,6 +320,7 @@ void mfrc522_interface_debug_print(const char *const fmt, ...)
     
     len = strlen((char *)str);
     (void)printf((uint8_t *)str, len);
+#endif
 }
 
 /**
