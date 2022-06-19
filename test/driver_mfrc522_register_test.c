@@ -279,25 +279,29 @@ uint8_t mfrc522_register_test(mfrc522_interface_t interface, uint8_t addr)
     /* mfrc522_set_power_down/mfrc522_get_power_down test */
     mfrc522_interface_debug_print("mfrc522: mfrc522_set_power_down/mfrc522_get_power_down test.\n");
     
-    /* enable */
-    res = mfrc522_set_power_down(&gs_handle, MFRC522_BOOL_TRUE);
-    if (res != 0)
+    /* if not uart interface */
+    if (interface != MFRC522_INTERFACE_UART)
     {
-        mfrc522_interface_debug_print("mfrc522: set power down failed.\n");
-        (void)mfrc522_deinit(&gs_handle);
-        
-        return 1;
+        /* enable */
+        res = mfrc522_set_power_down(&gs_handle, MFRC522_BOOL_TRUE);
+        if (res != 0)
+        {
+            mfrc522_interface_debug_print("mfrc522: set power down failed.\n");
+            (void)mfrc522_deinit(&gs_handle);
+            
+            return 1;
+        }
+        mfrc522_interface_debug_print("mfrc522: set power down enable.\n");
+        res = mfrc522_get_power_down(&gs_handle, &enable);
+        if (res != 0)
+        {
+            mfrc522_interface_debug_print("mfrc522: get power down failed.\n");
+            (void)mfrc522_deinit(&gs_handle);
+            
+            return 1;
+        }
+        mfrc522_interface_debug_print("mfrc522: check power down %s.\n", enable == MFRC522_BOOL_TRUE ? "ok" : "error");
     }
-    mfrc522_interface_debug_print("mfrc522: set power down enable.\n");
-    res = mfrc522_get_power_down(&gs_handle, &enable);
-    if (res != 0)
-    {
-        mfrc522_interface_debug_print("mfrc522: get power down failed.\n");
-        (void)mfrc522_deinit(&gs_handle);
-        
-        return 1;
-    }
-    mfrc522_interface_debug_print("mfrc522: check power down %s.\n", enable == MFRC522_BOOL_TRUE ? "ok" : "error");
     
     /* disable */
     res = mfrc522_set_power_down(&gs_handle, MFRC522_BOOL_FALSE);

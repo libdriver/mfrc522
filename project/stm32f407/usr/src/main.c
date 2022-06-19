@@ -812,7 +812,7 @@ uint8_t mfrc522(uint8_t argc, char **argv)
                         
                         return 1;
                     }
-                    mfrc522_interface_debug_print("%s crc is 0x%04X.\n", argv[4], crc);
+                    mfrc522_interface_debug_print("%s crc is 0x%04X.\n", argv[5], crc);
                     
                     (void)mfrc522_basic_deinit();
                     (void)gpio_interrupt_deinit();

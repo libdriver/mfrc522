@@ -119,14 +119,18 @@ static uint8_t a_mfrc522_read(mfrc522_handle_t *handle, uint8_t reg, uint8_t *bu
     
     if (handle->iic_spi_uart == MFRC522_INTERFACE_IIC)                     /* if iic interface */
     {
-        if (handle->iic_read(handle->iic_addr, reg, buf, len) != 0)        /* iic read */
+        uint8_t addr;
+        
+        for (i = 0; i< len; i++)                                           /* len times */
         {
-            return 1;                                                      /* return error */
+            addr = reg + i;                                                /* set the address */
+            if (handle->iic_read(handle->iic_addr, addr, buf + i, 1) != 0) /* check the result */
+            {
+                return 1;                                                  /* return error */
+            }
         }
-        else
-        {
-            return 0;                                                      /* success return 0 */
-        }
+        
+        return 0;                                                          /* success return 0 */
     }
     else if (handle->iic_spi_uart == MFRC522_INTERFACE_SPI)                /* if spi interface */
     {
@@ -162,6 +166,7 @@ static uint8_t a_mfrc522_read(mfrc522_handle_t *handle, uint8_t reg, uint8_t *bu
             {
                 return 1;                                                  /* return error */
             }
+            handle->delay_ms(2);                                           /* uart delay 2 ms */
         }
         
         return 0;                                                          /* success return 0 */
@@ -189,14 +194,19 @@ static uint8_t a_mfrc522_write(mfrc522_handle_t *handle, uint8_t reg, uint8_t *b
     
     if (handle->iic_spi_uart == MFRC522_INTERFACE_IIC)                     /* if iic interface */
     {
-        if (handle->iic_write(handle->iic_addr, reg, buf, len) != 0)       /* iic write */
+        uint8_t addr;
+        
+        for (i = 0; i< len; i++)                                           /* len times */
         {
-            return 1;                                                      /* return error */
+            addr = reg + i;                                                /* set the address */
+            if (handle->iic_write(handle->iic_addr, addr, 
+                                  buf + i, 1) != 0)                        /* check the result */
+            {
+                return 1;                                                  /* return error */
+            }
         }
-        else
-        {
-            return 0;                                                      /* success return 0 */
-        }
+        
+        return 0;                                                          /* success return 0 */
     }
     else if (handle->iic_spi_uart == MFRC522_INTERFACE_SPI)                /* if spi interface */
     {
@@ -227,6 +237,7 @@ static uint8_t a_mfrc522_write(mfrc522_handle_t *handle, uint8_t reg, uint8_t *b
             {
                 return 1;                                                  /* return error */
             }
+            handle->delay_ms(5);                                           /* uart delay 5 ms */
         }
         
         return 0;                                                          /* success return 0 */
@@ -721,6 +732,10 @@ uint8_t mfrc522_irq_handler(mfrc522_handle_t *handle)
         return 3;                                                            /* return error */
     }
     
+    if (handle->iic_spi_uart == MFRC522_INTERFACE_UART)                      /* if uart interface */
+    {
+        handle->delay_ms(2);                                                 /* for uart interface delay 2 ms */
+    }
     res = a_mfrc522_read(handle, MFRC522_REG_STATUS1, &prev, 1);             /* read status1 */
     if (res != 0)                                                            /* check the result */
     {
