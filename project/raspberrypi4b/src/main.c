@@ -151,7 +151,7 @@ uint8_t mfrc522(uint8_t argc, char **argv)
             mfrc522_interface_debug_print("mfrc522: UART interface TX connected to GPIO14(BCM).\n");
             mfrc522_interface_debug_print("mfrc522: UART interface RX connected to GPIO15(BCM).\n");
             mfrc522_interface_debug_print("mfrc522: INT connected to GPIO17(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: RESET connected to GPIO26(BCM).\n");
+            mfrc522_interface_debug_print("mfrc522: RESET connected to GPIO27(BCM).\n");
             
             return 0;
         }
