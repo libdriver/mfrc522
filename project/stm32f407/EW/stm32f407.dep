@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>5</fileVersion>
+    <fileChecksum>3455095254</fileChecksum>
+    <configuration>
+        <name>Release</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\interface\src\spi.c</file>
+            <file>$PROJ_DIR$\..\interface\src\iic.c</file>
+            <file>$PROJ_DIR$\..\interface\src\delay.c</file>
+            <file>$PROJ_DIR$\..\interface\src\uart.c</file>
+            <file>$PROJ_DIR$\..\interface\src\clock.c</file>
+            <file>$PROJ_DIR$\..\interface\src\gpio.c</file>
+            <file>$PROJ_DIR$\..\driver\src\stm32f407_driver_mfrc522_interface.c</file>
+            <file>$PROJ_DIR$\..\..\..\src\driver_mfrc522.c</file>
+            <file>$PROJ_DIR$\..\..\..\test\driver_mfrc522_register_test.c</file>
+            <file>$PROJ_DIR$\..\..\..\test\driver_mfrc522_mifare_test.c</file>
+            <file>$PROJ_DIR$\..\interface\src\wire.c</file>
+            <file>$PROJ_DIR$\..\..\..\example\driver_mfrc522_basic.c</file>
+        </outputs>
+        <forcedrebuild>
+            <name>[REBUILD_ALL]</name>
+        </forcedrebuild>
+    </configuration>
+</project>
