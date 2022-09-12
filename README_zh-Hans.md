@@ -58,6 +58,8 @@ NTAG21x驱动可参考https://github.com/hepingood/ntag21x
 #### example basic
 
 ```C
+#include "driver_mfrc522_basic.h"
+
 uint8_t i;
 uint8_t buf[25];
 uint16_t crc;
