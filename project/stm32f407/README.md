@@ -1,6 +1,6 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
 chip name : STM32F407ZGT6.
 
@@ -16,9 +16,9 @@ gpio pin: INT PB0.
 
 reset pin: RESET PA8.
 
-### 2. shell
+### 2. Shell
 
-#### 2.1 shell parameter
+#### 2.1 Shell Parameter
 
 baud rate: 115200.
 
@@ -30,9 +30,9 @@ parity: none.
 
 flow control: none.
 
-### 3. mfrc522
+### 3. MFRC522
 
-#### 3.1 command Instruction
+#### 3.1 Command Instruction
 
 ​           mfrc522 is a basic command which can test all mfrc522 driver function:
 
@@ -56,7 +56,7 @@ flow control: none.
 
 ​           -c random (-spi | -uart | -iic <addr>)         run mfrc522 random function.addr is the iic address.
 
-#### 3.2 command example
+#### 3.2 Command Example
 
 ```shell
 mfrc522 -i
