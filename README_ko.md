@@ -58,6 +58,8 @@ NTAG21x 드라이브는 https://github.com/hepingood/ntag21x 를참조할 수 �
 #### example basic
 
 ```C
+#include "driver_mfrc522_basic.h"
+
 uint8_t i;
 uint8_t buf[25];
 uint16_t crc;

@@ -35,15 +35,15 @@ NTAG21x drive can refer to https://github.com/hepingood/ntag21x
 
 /src includes LibDriver MFRC522 source files.
 
-/interface includes LibDriver MFRC522 IIC, SPI, UART platform independent template。
+/interface includes LibDriver MFRC522 IIC, SPI, UART platform independent template.
 
-/test includes LibDriver MFRC522 driver test code and this code can test the chip necessary function simply。
+/test includes LibDriver MFRC522 driver test code and this code can test the chip necessary function simply.
 
 /example includes LibDriver MFRC522 sample code.
 
 /doc includes LibDriver MFRC522 offline document.
 
-/datasheet includes MFRC522 datasheet。
+/datasheet includes MFRC522 datasheet.
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
@@ -58,6 +58,8 @@ Add /src, /interface and /example to your project.
 #### example basic
 
 ```C
+#include "driver_mfrc522_basic.h"
+
 uint8_t i;
 uint8_t buf[25];
 uint16_t crc;
