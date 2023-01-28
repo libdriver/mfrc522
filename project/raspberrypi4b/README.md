@@ -1,18 +1,18 @@
-### 1. Chip
+### 1. Board
 
-#### 1.1 Chip Info
+#### 1.1 Board Info
 
-chip name : Raspberry Pi 4B.
+Board Name: Raspberry Pi 4B.
 
-iic pin: SCL/SDA GPIO3/GPIO2.
+IIC Pin: SCL/SDA GPIO3/GPIO2.
 
-spi pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
+SPI Pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
 
-uart pin: TX/RX GPIO14/GPIO15.
+UART Pin: TX/RX GPIO14/GPIO15.
 
-gpio pin: INT GPIO17.
+GPIO Pin: INT GPIO17.
 
-reset pin: RESET GPIO26.
+RESET Pin: RESET GPIO26.
 
 ### 2. Install
 
@@ -83,27 +83,53 @@ find_package(mfrc522 REQUIRED)
 
 #### 3.1 Command Instruction
 
-​           mfrc522 is a basic command which can test all mfrc522 driver function:
+1. Show mfrc522 chip and driver information.
 
-​           -i          show mfrc522 chip and driver information.
+   ```shell
+   mfrc522 (-i | --information)
+   ```
 
-​           -h        show mfrc522 help.
+2. Show mfrc522 help.
 
-​           -p        show mfrc522 pin connections of the current board.
+   ```shell
+   mfrc522 (-h | --help)
+   ```
 
-​           -t  (reg (-spi | -uart | -iic <addr>)  | mifare (-spi | -uart | -iic <addr>))
+3. Show mfrc522 pin connections of the current board.
 
-​           -t  reg (-spi | -uart | -iic <addr>)        run mfrc522 register test. addr is the iic address.
+   ```shell
+   mfrc522 (-p | --port)
+   ```
 
-​           -t mifare (-spi | -uart | -iic <addr>)        run mfrc522 mifare test. addr is the iic address.
+4. Run mfrc522 register test, address is the iic address.
 
-​           -c (mifare (-spi | -uart | -iic <addr>)  <data> | crc (-spi | -uart | -iic <addr>)  <data> | random (-spi | -uart | -iic <addr>))
+   ```shell
+   mfrc522 (-t reg | --test=reg) [--interface=<spi | iic | uart>] [--addr=<address>]
+   ```
 
-​           -c mifare (-spi | -uart | -iic <addr>)  <data>        run mfrc522 mifare function.addr is the iic address, data is the send data and data is hexadecimal.
+5. Run mfrc522 mifare test, address is the iic address.
 
-​           -c crc (-spi | -uart | -iic <addr>)  <data>        run mfrc522 crc function.addr is the iic address, data is the send data and data is hexadecimal.
+   ```shell
+   mfrc522 (-t mifare | --test=mifare) [--interface=<spi | iic | uart>] [--addr=<address>]
+   ```
 
-​           -c random (-spi | -uart | -iic <addr>)         run mfrc522 random function.addr is the iic address.
+6. Run mfrc522 mifare function, address is the iic address, data is the send data and it is hexadecimal.
+
+   ```shell
+   mfrc522 (-e mifare | --example=mifare) [--interface=<spi | iic | uart>] [--addr=<address>] --data=<hex>
+   ```
+
+7. Run mfrc522 crc function, address is the iic address, string is the crc string.
+
+   ```shell
+   mfrc522 (-e crc | --example=crc) [--interface=<spi | iic | uart>] [--addr=<address>] --str=<string>
+   ```
+
+8. Run mfrc522 random function, address is the iic address.
+
+   ```shell
+   mfrc522 (-e random | --example=random) [--interface=<spi | iic | uart>] [--addr=<address>]
+   ```
 
 #### 3.2 Command Example
 
@@ -137,7 +163,7 @@ mfrc522: RESET connected to GPIO27(BCM).
 ```
 
 ```shell
-./mfrc522 -t reg -spi
+./mfrc522 -t reg --interface=spi
 
 mfrc522: chip is NXP MFRC522.
 mfrc522: manufacturer is NXP.
@@ -150,7 +176,7 @@ mfrc522: max temperature is 85.0C.
 mfrc522: min temperature is -25.0C.
 mfrc522: start register test.
 mfrc522: mfrc522_set_addr_pin/mfrc522_get_addr_pin test.
-mfrc522: set addr 0x8D.
+mfrc522: set addr 0x67.
 mfrc522: check addr pin ok.
 mfrc522: mfrc522_set_interface/mfrc522_get_interface test.
 mfrc522: set interface iic.
@@ -264,7 +290,7 @@ mfrc522: fifo level is 0x00.
 mfrc522: mfrc522_flush_fifo test.
 mfrc522: check flush fifo ok.
 mfrc522: mfrc522_set_water_level/mfrc522_get_water_level test.
-mfrc522: set water level 0x01.
+mfrc522: set water level 0x06.
 mfrc522: check water level ok.
 mfrc522: mfrc522_start_timer test.
 mfrc522: check start timer ok.
@@ -277,7 +303,7 @@ mfrc522: check start send ok.
 mfrc522: mfrc522_stop_send test.
 mfrc522: check stop send ok.
 mfrc522: mfrc522_set_tx_last_bits/mfrc522_get_tx_last_bits test.
-mfrc522: set tx last bits 0x07.
+mfrc522: set tx last bits 0x01.
 mfrc522: check tx last bits ok.
 mfrc522: mfrc522_set_rx_align/mfrc522_get_rx_align test.
 mfrc522: set rx align 0.
@@ -430,13 +456,13 @@ mfrc522: check contactless uart input ok.
 mfrc522: set contactless uart input nrz.
 mfrc522: check contactless uart input ok.
 mfrc522: mfrc522_set_rx_wait/mfrc522_get_rx_wait test.
-mfrc522: set rx wait 0x1E.
+mfrc522: set rx wait 0x33.
 mfrc522: check rx wait ok.
 mfrc522: mfrc522_set_min_level/mfrc522_get_min_level test.
-mfrc522: set min level 0x02.
+mfrc522: set min level 0x08.
 mfrc522: check min level ok.
 mfrc522: mfrc522_set_collision_level/mfrc522_get_collision_level test.
-mfrc522: set collision level 0x06.
+mfrc522: set collision level 0x07.
 mfrc522: check collision level ok.
 mfrc522: mfrc522_set_channel_reception/mfrc522_get_channel_reception test.
 mfrc522: set channel reception stronger channel.
@@ -454,13 +480,13 @@ mfrc522: check timer prescal even ok.
 mfrc522: set timer prescal even disable.
 mfrc522: check timer prescal even ok.
 mfrc522: mfrc522_set_timer_constant_reception/mfrc522_get_timer_constant_reception test.
-mfrc522: set timer constant reception 0x02.
+mfrc522: set timer constant reception 0x01.
 mfrc522: check timer constant reception ok.
 mfrc522: mfrc522_set_timer_constant_sync/mfrc522_get_timer_constant_sync test.
-mfrc522: set timer constant sync 0x01.
+mfrc522: set timer constant sync 0x00.
 mfrc522: check timer constant sync ok.
 mfrc522: mfrc522_set_tx_wait/mfrc522_get_tx_wait test.
-mfrc522: set tx wait 0x02.
+mfrc522: set tx wait 0x00.
 mfrc522: check tx wait ok.
 mfrc522: mfrc522_set_parity_disable/mfrc522_get_parity_disable test.
 mfrc522: set parity disable enable.
@@ -468,14 +494,14 @@ mfrc522: check parity disable ok.
 mfrc522: set parity disable disable.
 mfrc522: check parity disable ok.
 mfrc522: mfrc522_set_serial_speed/mfrc522_get_serial_speed test.
-mfrc522: set serial speed t0 0x03.
-mfrc522: set serial speed t1 0x05.
+mfrc522: set serial speed t0 0x05.
+mfrc522: set serial speed t1 0x1A.
 mfrc522: check serial speed t0 ok.
 mfrc522: check serial speed t1 ok.
 mfrc522: mfrc522_get_crc test.
 mfrc522: crc is 0xFFFF.
 mfrc522: mfrc522_set_modulation_width/mfrc522_get_modulation_width test.
-mfrc522: set modulation width 0x48.
+mfrc522: set modulation width 0xAB.
 mfrc522: check modulation width ok.
 mfrc522: mfrc522_set_rx_gain/mfrc522_get_rx_gain test.
 mfrc522: set rx gain 18 db.
@@ -491,16 +517,16 @@ mfrc522: check rx gain ok.
 mfrc522: set rx gain 48 db.
 mfrc522: check rx gain ok.
 mfrc522: mfrc522_set_cwgsn/mfrc522_get_cwgsn test.
-mfrc522: set cwgsn 0x02.
+mfrc522: set cwgsn 0x05.
 mfrc522: check cwgsn ok.
 mfrc522: mfrc522_set_modgsn/mfrc522_get_modgsn test.
-mfrc522: set modgsn 0x08.
+mfrc522: set modgsn 0x04.
 mfrc522: check modgsn ok.
 mfrc522: mfrc522_set_cwgsp/mfrc522_get_cwgsp test.
-mfrc522: set cwgsp 0x08.
+mfrc522: set cwgsp 0x23.
 mfrc522: check cwgsp ok.
 mfrc522: mfrc522_set_modgsp/mfrc522_get_modgsp test.
-mfrc522: set modgsp 0x3B.
+mfrc522: set modgsp 0x06.
 mfrc522: check modgsp ok.
 mfrc522: mfrc522_set_timer_auto/mfrc522_get_timer_auto test.
 mfrc522: set timer auto enable.
@@ -520,10 +546,10 @@ mfrc522: check timer auto restart ok.
 mfrc522: set timer auto restart disable.
 mfrc522: check timer auto restart ok.
 mfrc522: mfrc522_set_timer_prescaler/mfrc522_get_timer_prescaler test.
-mfrc522: set timer prescaler 0x09A2.
+mfrc522: set timer prescaler 0x06BD.
 mfrc522: check timer prescaler ok.
 mfrc522: mfrc522_set_timer_reload/mfrc522_get_timer_reload test.
-mfrc522: set timer reload 0xED53.
+mfrc522: set timer reload 0xBE92.
 mfrc522: check timer reload ok.
 mfrc522: mfrc522_get_timer_counter test.
 mfrc522: check timer reload 0x0000.
@@ -533,7 +559,7 @@ mfrc522: mfrc522_set_test_bus_signal_1/mfrc522_get_test_bus_signal_1 test.
 mfrc522: set test bus signal 1 0x04.
 mfrc522: check test bus signal 1 ok.
 mfrc522: mfrc522_set_test_bus_signal_2/mfrc522_get_test_bus_signal_2 test.
-mfrc522: set test bus signal 2 0x1E.
+mfrc522: set test bus signal 2 0x0A.
 mfrc522: check test bus signal 2 ok.
 mfrc522: mfrc522_set_test_bus_flip/mfrc522_get_test_bus_flip test.
 mfrc522: set test bus flip enable.
@@ -556,7 +582,7 @@ mfrc522: check test rs232 line ok.
 mfrc522: set test rs232 line disable.
 mfrc522: check test rs232 line ok.
 mfrc522: mfrc522_set_test_pin_enable/mfrc522_get_test_pin_enable test.
-mfrc522: set test pin enable 0x1B.
+mfrc522: set test pin enable 0x2C.
 mfrc522: check test pin enable ok.
 mfrc522: mfrc522_set_test_port_io/mfrc522_get_test_port_io test.
 mfrc522: set test port io enable.
@@ -564,10 +590,10 @@ mfrc522: check test port io ok.
 mfrc522: set test port io disable.
 mfrc522: check test port io ok.
 mfrc522: mfrc522_set_test_pin_value/mfrc522_get_test_pin_value test.
-mfrc522: set test pin value 0x11.
+mfrc522: set test pin value 0x30.
 mfrc522: check test pin value ok.
 mfrc522: mfrc522_get_test_bus test.
-mfrc522: get test bus 0x00.
+mfrc522: get test bus 0x10.
 mfrc522: mfrc522_set_test_amp_rcv/mfrc522_get_test_amp_rcv test.
 mfrc522: set test amp rcv enable.
 mfrc522: check test amp rcv ok.
@@ -633,10 +659,10 @@ mfrc522: check test analog control aux 2 ok.
 mfrc522: set test analog control aux 2 defined bit.
 mfrc522: check test analog control aux 2 ok.
 mfrc522: mfrc522_set_test_dac_1/mfrc522_get_test_dac_1 test.
-mfrc522: set test dac 1 0x1F.
+mfrc522: set test dac 1 0x3B.
 mfrc522: check test dac 1 ok.
 mfrc522: mfrc522_set_test_dac_2/mfrc522_get_test_dac_2 test.
-mfrc522: set test dac 2 0x2A.
+mfrc522: set test dac 2 0x3B.
 mfrc522: check test dac 2 ok.
 mfrc522: mfrc522_get_test_adc test.
 mfrc522: test adc i is 0x08 adc q is 0x08.
@@ -644,7 +670,7 @@ mfrc522: finish register test.
 ```
 
 ```shell
-./mfrc522 -t mifare -spi
+./mfrc522 -t mifare --interface=spi
 
 mfrc522: chip is NXP MFRC522.
 mfrc522: manufacturer is NXP.
@@ -663,7 +689,7 @@ mfrc522: irq lo alert.
 mfrc522: irq idle.
 mfrc522: irq lo alert.
 mfrc522: irq idle.
-0xC9 0x58 0x77 0xFF 0xCA 0x41 0xC3 0x01 0xFF 0x81 0x9A 0x1F 0x60 0x93 0xA9 0x02 0x01 0x21 0x78 0x27 0x83 0x10 0x40 0x48 0xF9 
+0x01 0xDE 0xFF 0xC2 0x5F 0xC7 0xFB 0xED 0x86 0x00 0xFE 0xBF 0x5B 0x06 0xBF 0xCF 0x89 0xFF 0xFE 0xEF 0xF7 0xDD 0xFF 0xFA 0xD2 
 mfrc522: mifare crc test.
 mfrc522: irq lo alert.
 mfrc522: irq crc.
@@ -677,45 +703,52 @@ mfrc522: mifare anticoll test.
 mfrc522: irq lo alert.
 mfrc522: irq rx.
 mfrc522: irq tx.
-mfrc522: id is 0xF7 0x11 0xC3 0xB4.
+mfrc522: id is 0x9C 0xA1 0x90 0x85.
 mfrc522: finish mifare test.
 ```
 
 ```shell
-./mfrc522 -c mifare -spi 26
+./mfrc522 -e mifare --interface=spi --data=0x26
 
 0x04 0x00
 ```
 
 ```shell
-./mfrc522 -c crc -spi 0123456
+./mfrc522 -e crc --interface=spi --str=0123456
 
 0123456 crc is 0x4090.
 ```
 
 ```shell
-./mfrc522 -c random -spi 
+./mfrc522 -e random --interface=spi
 
-0xC9 0x58 0xE1 0x67 0x84 0x41 0xC3 0x01 0xDB 0x56 0x2D 0x0D 0xB8 0xA9 0x02 0x01 0x21 0x78 0x27 0x83 0x10 0x40 0x48 0xD5 0x42 
+0x01 0xDE 0xDD 0x92 0x60 0xC7 0xFB 0xED 0x30 0x0F 0xB9 0x2B 0x81 0xA3 0xBF 0xCF 0x89 0xFF 0xFE 0xEF 0xF7 0xDD 0xFF 0xFA 0x77 
 ```
 
 ```shell
 ./mfrc522 -h
 
-mfrc522 -i
-	show mfrc522 chip and driver information.
-mfrc522 -h
-	show mfrc522 help.
-mfrc522 -p
-	show mfrc522 pin connections of the current board.
-mfrc522 -t reg (-spi | -uart | -iic <addr>)
-	run mfrc522 register test.addr is the iic address.
-mfrc522 -t mifare (-spi | -uart | -iic <addr>)
-	run mfrc522 mifare test.addr is the iic address.
-mfrc522 -c mifare (-spi | -uart | -iic <addr>) <data>
-	run mfrc522 mifare function.addr is the iic address, data is the send data and data is hexadecimal.
-mfrc522 -c crc (-spi | -uart | -iic <addr>) <data>
-	run mfrc522 crc function.addr is the iic address, data is the send data and data is hexadecimal.
-mfrc522 -c random (-spi | -uart | -iic <addr>)
-	run mfrc522 random function.addr is the iic address.
+Usage:
+  mfrc522 (-i | --information)
+  mfrc522 (-h | --help)
+  mfrc522 (-p | --port)
+  mfrc522 (-t reg | --test=reg) [--interface=<spi | iic | uart>] [--addr=<address>]
+  mfrc522 (-t mifare | --test=mifare) [--interface=<spi | iic | uart>] [--addr=<address>]
+  mfrc522 (-e mifare | --example=mifare) [--interface=<spi | iic | uart>] [--addr=<address>] --data=<hex>
+  mfrc522 (-e crc | --example=crc) [--interface=<spi | iic | uart>] [--addr=<address>] --str=<string>
+  mfrc522 (-e random | --example=random) [--interface=<spi | iic | uart>] [--addr=<address>]
+
+Options:
+      --addr=<address>    Set the addr pin.([default: 0])
+      --data=<hex>        Set the send data and it is hexadecimal.
+  -e <mifare | crc | random>, --example=<mifare | crc | random>
+                          Run the driver example.
+  -h, --help              Show the help.
+  -i, --information       Show the chip information.
+      --interface=<spi | iic | uart>
+                          Set the chip interface.([default: spi])
+  -p, --port              Display the pin connections of the current board.
+      --str=<string>      Set the crc string.
+  -t <reg | mifare>, --test=<reg | mifare>
+                          Run the driver test.
 ```

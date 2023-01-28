@@ -255,7 +255,7 @@ uint16_t mfrc522_interface_uart_read(uint8_t *buf, uint16_t len)
 {
     uint32_t l = len;
 
-    if (uart_read(gs_uart_fd, buf, (uint32_t *)&l))
+    if (uart_read(gs_uart_fd, buf, (uint32_t *)&l) != 0)
     {
         return 0;
     }
@@ -310,12 +310,12 @@ void mfrc522_interface_debug_print(const char *const fmt, ...)
 {
 #ifndef NO_DEBUG
     char str[256];
-    uint8_t len;
+    uint16_t len;
     va_list args;
     
-    memset((char *)str, 0, sizeof(char)*256); 
+    memset((char *)str, 0, sizeof(char) * 256); 
     va_start(args, fmt);
-    vsnprintf((char *)str, 256, (char const *)fmt, args);
+    vsnprintf((char *)str, 255, (char const *)fmt, args);
     va_end(args);
     
     len = strlen((char *)str);
