@@ -38,9 +38,10 @@
 #include "driver_mfrc522_mifare_test.h"
 #include "driver_mfrc522_basic.h"
 #include "gpio.h"
+#include <getopt.h>
+#include <math.h>
 #include <stdlib.h>
 
-uint8_t g_flag;                            /**< interrupt flag */
 uint8_t (*g_gpio_irq)(void) = NULL;        /**< gpio irq function address */
 
 /**
@@ -115,694 +116,482 @@ static void a_callback(uint16_t type)
  */
 uint8_t mfrc522(uint8_t argc, char **argv)
 {
+    int c;
+    int longindex = 0;
+    const char short_options[] = "hipe:t:";
+    const struct option long_options[] =
+    {
+        {"help", no_argument, NULL, 'h'},
+        {"information", no_argument, NULL, 'i'},
+        {"port", no_argument, NULL, 'p'},
+        {"example", required_argument, NULL, 'e'},
+        {"test", required_argument, NULL, 't'},
+        {"addr", required_argument, NULL, 1},
+        {"data", required_argument, NULL, 2},
+        {"interface", required_argument, NULL, 3},
+        {"str", required_argument, NULL, 4},
+        {NULL, 0, NULL, 0},
+    };
+    char type[33] = "unknow";
+    uint8_t addr = 0x00;
+    uint64_t data = 0x00;
+    uint8_t data_flag = 0;
+    uint8_t str_flag = 0;
+    mfrc522_interface_t interface = MFRC522_INTERFACE_SPI;
+    char str[49] = {0};
+    
+    /* if no params */
     if (argc == 1)
     {
+        /* goto the help */
         goto help;
     }
-    else if (argc == 2)
+    
+    /* init 0 */
+    optind = 0;
+    
+    /* parse */
+    do
     {
-        if (strcmp("-i", argv[1]) == 0)
+        /* parse the args */
+        c = getopt_long(argc, argv, short_options, long_options, &longindex);
+        
+        /* judge the result */
+        switch (c)
         {
-            mfrc522_info_t info;
-            
-            /* print mfrc522 info */
-            mfrc522_info(&info);
-            mfrc522_interface_debug_print("mfrc522: chip is %s.\n", info.chip_name);
-            mfrc522_interface_debug_print("mfrc522: manufacturer is %s.\n", info.manufacturer_name);
-            mfrc522_interface_debug_print("mfrc522: interface is %s.\n", info.interface);
-            mfrc522_interface_debug_print("mfrc522: driver version is %d.%d.\n", info.driver_version / 1000, (info.driver_version % 1000) / 100);
-            mfrc522_interface_debug_print("mfrc522: min supply voltage is %0.1fV.\n", info.supply_voltage_min_v);
-            mfrc522_interface_debug_print("mfrc522: max supply voltage is %0.1fV.\n", info.supply_voltage_max_v);
-            mfrc522_interface_debug_print("mfrc522: max current is %0.2fmA.\n", info.max_current_ma);
-            mfrc522_interface_debug_print("mfrc522: max temperature is %0.1fC.\n", info.temperature_max);
-            mfrc522_interface_debug_print("mfrc522: min temperature is %0.1fC.\n", info.temperature_min);
-            
-            return 0;
-        }
-        else if (strcmp("-p", argv[1]) == 0)
-        {
-            /* print pin connection */
-            mfrc522_interface_debug_print("mfrc522: SPI interface SCK connected to GPIO11(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: SPI interface MISO connected to GPIO9(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: SPI interface MOSI connected to GPIO10(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: SPI interface CS connected to GPIO8(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: IIC interface SCL connected to GPIO3(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: IIC interface SDA connected to GPIO2(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: UART interface TX connected to GPIO14(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: UART interface RX connected to GPIO15(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: INT connected to GPIO17(BCM).\n");
-            mfrc522_interface_debug_print("mfrc522: RESET connected to GPIO27(BCM).\n");
-            
-            return 0;
-        }
-        else if (strcmp("-h", argv[1]) == 0)
-        {
-            /* show mfrc522 help */
-            help:
-            
-            mfrc522_interface_debug_print("mfrc522 -i\n\tshow mfrc522 chip and driver information.\n");
-            mfrc522_interface_debug_print("mfrc522 -h\n\tshow mfrc522 help.\n");
-            mfrc522_interface_debug_print("mfrc522 -p\n\tshow mfrc522 pin connections of the current board.\n");
-            mfrc522_interface_debug_print("mfrc522 -t reg (-spi | -uart | -iic <addr>)\n\trun mfrc522 register test.addr is the iic address.\n");
-            mfrc522_interface_debug_print("mfrc522 -t mifare (-spi | -uart | -iic <addr>)\n\trun mfrc522 mifare test.addr is the iic address.\n");
-            mfrc522_interface_debug_print("mfrc522 -c mifare (-spi | -uart | -iic <addr>) <data>\n\trun mfrc522 mifare function."
-                                          "addr is the iic address, data is the send data and data is hexadecimal.\n");
-            mfrc522_interface_debug_print("mfrc522 -c crc (-spi | -uart | -iic <addr>) <data>\n\trun mfrc522 crc function."
-                                          "addr is the iic address, data is the send data and data is hexadecimal.\n");
-            mfrc522_interface_debug_print("mfrc522 -c random (-spi | -uart | -iic <addr>)\n\trun mfrc522 random function.addr is the iic address.\n");
-            
-            return 0;
-        }
-        else
-        {
-            return 5;
-        }
-    }
-    else if (argc == 4)
-    {
-        if (strcmp("-t", argv[1]) == 0)
-        {
-            if (strcmp("reg", argv[2]) == 0)
+            /* help */
+            case 'h' :
             {
-                if (strcmp("-spi", argv[3]) == 0)
-                {
-                    /* run register test */
-                    if (mfrc522_register_test(MFRC522_INTERFACE_SPI, 0x00) != 0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-                else if (strcmp("-uart", argv[3]) == 0)
-                {
-                    /* run register test */
-                    if (mfrc522_register_test(MFRC522_INTERFACE_UART, 0x00) != 0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-            else if (strcmp("mifare", argv[2]) == 0)
-            {
-                uint8_t res;
+                /* set the type */
+                memset(type, 0, sizeof(char) * 33);
+                snprintf(type, 32, "h");
                 
-                if (strcmp("-spi", argv[3]) == 0)
-                {
-                    /* run mifare test */
-                    g_gpio_irq = mfrc522_mifare_test_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    if (mfrc522_mifare_test(MFRC522_INTERFACE_SPI, 0x00) != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    
-                    (void)gpio_interrupt_deinit();
-                     g_gpio_irq = NULL;
-                    
-                    return 0;
-                }
-                else if (strcmp("-uart", argv[3]) == 0)
-                {
-                    /* run mifare test */
-                    g_gpio_irq = mfrc522_mifare_test_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    if (mfrc522_mifare_test(MFRC522_INTERFACE_UART, 0x00) != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    
-                    (void)gpio_interrupt_deinit();
-                     g_gpio_irq = NULL;
-                    
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                break;
             }
-            else
-            {
-                return 5;
-            }
-        }
-        else if (strcmp("-c", argv[1]) == 0)
-        {
-            uint8_t res;
             
-            if (strcmp("random", argv[2]) == 0)
+            /* information */
+            case 'i' :
             {
-                if (strcmp("-spi", argv[3]) == 0)
-                {
-                    uint8_t i;
-                    uint8_t buf[25];
-                    
-                    /* get the random */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_SPI, 0x00, a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    res = mfrc522_basic_generate_random(buf);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    for (i = 0; i < 25; i++)
-                    {
-                        mfrc522_interface_debug_print("0x%02X ", buf[i]);
-                    }
-                    mfrc522_interface_debug_print("\n");
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                else if (strcmp("-uart", argv[3]) == 0)
-                {
-                    uint8_t i;
-                    uint8_t buf[25];
-                    
-                    /* get the random */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_UART, 0x00, a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    res = mfrc522_basic_generate_random(buf);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    for (i = 0; i < 25; i++)
-                    {
-                        mfrc522_interface_debug_print("0x%02X ", buf[i]);
-                    }
-                    mfrc522_interface_debug_print("\n");
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-            else
-            {
-                return 5;
-            }
-        }
-        else
-        {
-            return 5;
-        }
-    }
-    else if (argc == 5)
-    {
-        if (strcmp("-t", argv[1]) == 0)
-        {
-            if (strcmp("reg", argv[2]) == 0)
-            {
-                if (strcmp("-iic", argv[3]) == 0)
-                {
-                    /* run register test */
-                    if (mfrc522_register_test(MFRC522_INTERFACE_IIC, (uint8_t)atoi(argv[4])) != 0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-            else if (strcmp("mifare", argv[2]) == 0)
-            {
-                uint8_t res;
+                /* set the type */
+                memset(type, 0, sizeof(char) * 33);
+                snprintf(type, 32, "i");
                 
-                if (strcmp("-iic", argv[3]) == 0)
-                {
-                    /* run mifare test */
-                    g_gpio_irq = mfrc522_mifare_test_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    if (mfrc522_mifare_test(MFRC522_INTERFACE_IIC, (uint8_t)atoi(argv[4])) != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    
-                    (void)gpio_interrupt_deinit();
-                     g_gpio_irq = NULL;
-                    
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                break;
             }
-            else
-            {
-                return 5;
-            }
-        }
-        else if (strcmp("-c", argv[1]) == 0)
-        {
-            uint8_t res;
             
-            if (strcmp("random", argv[2]) == 0)
+            /* port */
+            case 'p' :
             {
-                if (strcmp("-iic", argv[3]) == 0)
-                {
-                    uint8_t i;
-                    uint8_t buf[25];
-                    
-                    /* get the random */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_IIC, (uint8_t)atoi(argv[4]), a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    res = mfrc522_basic_generate_random(buf);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    for (i = 0; i < 25; i++)
-                    {
-                        mfrc522_interface_debug_print("0x%02X ", buf[i]);
-                    }
-                    mfrc522_interface_debug_print("\n");
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                /* set the type */
+                memset(type, 0, sizeof(char) * 33);
+                snprintf(type, 32, "p");
+                
+                break;
             }
-            else if (strcmp("crc", argv[2]) == 0)
+            
+            /* example */
+            case 'e' :
             {
-                if (strcmp("-spi", argv[3]) == 0)
-                {
-                    uint16_t crc;
-                    
-                    /* run the crc */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_SPI, 0x00, a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    res = mfrc522_basic_calculate_crc((uint8_t *)argv[4], (uint8_t)strlen(argv[4]), &crc);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    mfrc522_interface_debug_print("%s crc is 0x%04X.\n", argv[4], crc);
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                else if (strcmp("-uart", argv[3]) == 0)
-                {
-                    uint16_t crc;
-                    
-                    /* run the crc */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_UART, 0x00, a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    res = mfrc522_basic_calculate_crc((uint8_t *)argv[4], (uint8_t)strlen(argv[4]), &crc);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    mfrc522_interface_debug_print("%s crc is 0x%04X.\n", argv[4], crc);
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                /* set the type */
+                memset(type, 0, sizeof(char) * 33);
+                snprintf(type, 32, "e_%s", optarg);
+                
+                break;
             }
-            else if (strcmp("mifare", argv[2]) == 0)
+            
+            /* test */
+            case 't' :
             {
-                uint8_t i;
-                uint8_t in_buf[64];
-                uint8_t in_len;
-                uint8_t out_len;
-                uint8_t out_buf[64];
+                /* set the type */
+                memset(type, 0, sizeof(char) * 33);
+                snprintf(type, 32, "t_%s", optarg);
+                
+                break;
+            }
+            
+            /* addr */
+            case 1 :
+            {
+                /* set the addr pin */
+                addr = atol(optarg);
+                
+                break;
+            }
+            
+            /* data */
+            case 2 :
+            {
+                char *p;
                 uint16_t l;
-                
-                if (strcmp("-spi", argv[3]) == 0)
+                uint16_t i;
+                uint64_t hex_data;
+
+                /* set the data */
+                l = strlen(optarg);
+
+                /* check the header */
+                if (l >= 2)
                 {
-                    /* sent the mifare command */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
+                    if (strncmp(optarg, "0x", 2) == 0)
                     {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_SPI, 0x00, a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    l = (uint16_t)strlen(argv[4]);
-                    for (i = 0; (i < 64) & (l != 0); i++)
-                    {
-                        if ((int16_t)(l - 2) < 0)
-                        {
-                            break;
-                        }
-                        in_buf[i] = (argv[4][i * 2 + 0] - '0') * 16 + (argv[4][i * 2 + 1] - '0'); 
+                        p = optarg + 2;
                         l -= 2;
                     }
-                    in_len = i;
-                    out_len = 64;
-                    res = mfrc522_basic_transceiver(in_buf, in_len, out_buf, &out_len);
-                    if (res != 0)
+                    else if (strncmp(optarg, "0X", 2) == 0)
                     {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    for (i = 0; i < out_len; i++)
-                    {
-                        mfrc522_interface_debug_print("0x%02X ", out_buf[i]);
-                    }
-                    mfrc522_interface_debug_print("\n");
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                if (strcmp("-uart", argv[3]) == 0)
-                {
-                    /* sent the mifare command */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_UART, 0x00, a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    l = (uint16_t)strlen(argv[4]);
-                    for (i = 0; (i < 64) & (l != 0); i++)
-                    {
-                        if ((int16_t)(l - 2) < 0)
-                        {
-                            break;
-                        }
-                        in_buf[i] = (argv[4][i * 2 + 0] - '0') * 16 + (argv[4][i * 2 + 1] - '0'); 
+                        p = optarg + 2;
                         l -= 2;
                     }
-                    in_len = i;
-                    out_len = 64;
-                    res = mfrc522_basic_transceiver(in_buf, in_len, out_buf, &out_len);
-                    if (res != 0)
+                    else
                     {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
+                        p = optarg;
                     }
-                    for (i = 0; i < out_len; i++)
-                    {
-                        mfrc522_interface_debug_print("0x%02X ", out_buf[i]);
-                    }
-                    mfrc522_interface_debug_print("\n");
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
                 }
                 else
                 {
-                    return 5;
+                    p = optarg;
                 }
+                
+                /* init 0 */
+                hex_data = 0;
+
+                /* loop */
+                for (i = 0; i < l; i++)
+                {
+                    hex_data += (p[i] - '0') * (uint32_t)pow(16, l - i - 1);
+                }
+                
+                /* copy the data */
+                data = hex_data;
+                data_flag = 1;
+
+                break;
             }
-            else
-            {
-                return 5;
-            }
-        }
-        else
-        {
-            return 5;
-        }
-    }
-    else if (argc == 6)
-    {
-        if (strcmp("-c", argv[1]) == 0)
-        {
-            uint8_t res;
             
-            /* sent the mifare command */
-            if (strcmp("mifare", argv[2]) == 0)
+            /* interface */
+            case 3 :
             {
-                uint8_t i;
-                uint8_t in_buf[64];
-                uint8_t in_len;
-                uint8_t out_len;
-                uint8_t out_buf[64];
-                uint16_t l;
+                /* set the interface */
+                if (strcmp("spi", optarg) == 0)
+                {
+                    interface = MFRC522_INTERFACE_SPI;
+                }
+                else if (strcmp("iic", optarg) == 0)
+                {
+                    interface = MFRC522_INTERFACE_IIC;
+                }
+                else if (strcmp("uart", optarg) == 0)
+                {
+                    interface = MFRC522_INTERFACE_UART;
+                }
+                else
+                {
+                    return 5;
+                }
                 
-                if (strcmp("-iic", argv[3]) == 0)
-                {
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_IIC, (uint8_t)atoi(argv[4]), a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    l = (uint16_t)strlen(argv[5]);
-                    for (i = 0; (i < 64) & (l != 0); i++)
-                    {
-                        if ((int16_t)(l - 2) < 0)
-                        {
-                            break;
-                        }
-                        in_buf[i] = (argv[5][i * 2 + 0] - '0') * 16 + (argv[5][i * 2 + 1] - '0'); 
-                        l -= 2;
-                    }
-                    in_len = i;
-                    out_len = 64;
-                    res = mfrc522_basic_transceiver(in_buf, in_len, out_buf, &out_len);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    for (i = 0; i < out_len; i++)
-                    {
-                        mfrc522_interface_debug_print("0x%02X ", out_buf[i]);
-                    }
-                    mfrc522_interface_debug_print("\n");
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                break;
             }
-            else if (strcmp("crc", argv[2]) == 0)
+            
+            /* str */
+            case 4 :
             {
-                if (strcmp("-iic", argv[3]) == 0)
-                {
-                    uint16_t crc;
-                    
-                    /* run the crc */
-                    g_gpio_irq = mfrc522_interrupt_irq_handler;
-                    res = gpio_interrupt_init();
-                    if (res != 0)
-                    {
-                        return 1;
-                    }
-                    res = mfrc522_basic_init(MFRC522_INTERFACE_IIC, (uint8_t)atoi(argv[4]), a_callback);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    res = mfrc522_basic_calculate_crc((uint8_t *)argv[5], (uint8_t)strlen(argv[5]), &crc);
-                    if (res != 0)
-                    {
-                        (void)gpio_interrupt_deinit();
-                         g_gpio_irq = NULL;
-                        
-                        return 1;
-                    }
-                    mfrc522_interface_debug_print("%s crc is 0x%04X.\n", argv[4], crc);
-                    
-                    (void)mfrc522_basic_deinit();
-                    (void)gpio_interrupt_deinit();
-                    g_gpio_irq = NULL;
-                     
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                /* copy the string */
+                memset(str, 0, sizeof(char) * 49);
+                snprintf(str, 48, "%s", optarg);
+                str_flag = 1;
             }
-            else
+
+            /* the end */
+            case -1 :
+            {
+                break;
+            }
+            
+            /* others */
+            default :
             {
                 return 5;
             }
         }
+    } while (c != -1);
+
+    /* run the function */
+    if (strcmp("t_reg", type) == 0)
+    {
+        /* run reg test */
+        if (mfrc522_register_test(interface, addr) != 0)
+        {
+            return 1;
+        }
         else
+        {
+            return 0;
+        }
+    }
+    else if (strcmp("t_mifare", type) == 0)
+    {
+        uint8_t res;
+
+        /* set gpio irq */
+        g_gpio_irq = mfrc522_mifare_test_irq_handler;
+        
+        /* gpio init */
+        res = gpio_interrupt_init();
+        if (res != 0)
+        {
+            return 1;
+        }
+        
+        /* run mifare test */
+        if (mfrc522_mifare_test(interface, addr) != 0)
+        {
+            (void)gpio_interrupt_deinit();
+            g_gpio_irq = NULL;
+            
+            return 1;
+        }
+        
+        /* gpio deinit */
+        (void)gpio_interrupt_deinit();
+        g_gpio_irq = NULL;
+        
+        return 0;
+    }
+    else if (strcmp("e_mifare", type) == 0)
+    {
+        uint8_t res;
+        uint16_t i;
+        uint8_t in_buf[64];
+        uint8_t in_len;
+        uint8_t out_len;
+        uint8_t out_buf[64];
+        uint16_t l;
+        
+        /* check the flag */
+        if (data_flag != 1)
         {
             return 5;
         }
+
+        /* set gpio irq */
+        g_gpio_irq = mfrc522_interrupt_irq_handler;
+        
+        /* gpio init */
+        res = gpio_interrupt_init();
+        if (res != 0)
+        {
+            return 1;
+        }
+        
+        /* basic init */
+        res = mfrc522_basic_init(interface, addr, a_callback);
+        if (res != 0)
+        {
+            (void)gpio_interrupt_deinit();
+            g_gpio_irq = NULL;
+            
+            return 1;
+        }
+        
+        /* copy data */
+        memset(in_buf, 0, sizeof(char) * 64);
+        snprintf((char *)in_buf, 63, "%llx", data);
+        l = strlen((char *)in_buf) / 2;
+        for (i = 0; i < l; i++)
+        {
+            in_buf[i] = (data >> (8 * (l - i - 1))) & 0xFF;
+        }
+        in_len = l;
+        out_len = 64;
+        
+        /* transceiver */
+        res = mfrc522_basic_transceiver(in_buf, in_len, out_buf, &out_len);
+        if (res != 0)
+        {
+            (void)gpio_interrupt_deinit();
+            g_gpio_irq = NULL;
+            
+            return 1;
+        }
+        
+        /* output */
+        for (i = 0; i < out_len; i++)
+        {
+            mfrc522_interface_debug_print("0x%02X ", out_buf[i]);
+        }
+        mfrc522_interface_debug_print("\n");
+        
+        /* basic deint */
+        (void)mfrc522_basic_deinit();
+        (void)gpio_interrupt_deinit();
+        g_gpio_irq = NULL;
+        
+        return 0;
     }
-    /* param is invalid */
+    else if (strcmp("e_crc", type) == 0)
+    {
+        uint8_t res;
+        uint16_t crc;
+        
+        /* check the flag */
+        if (str_flag != 1)
+        {
+            return 5;
+        }
+
+        /* set gpio irq */
+        g_gpio_irq = mfrc522_interrupt_irq_handler;
+        
+        /* gpio init */
+        res = gpio_interrupt_init();
+        if (res != 0)
+        {
+            return 1;
+        }
+        
+        /* basic init */
+        res = mfrc522_basic_init(interface, addr, a_callback);
+        if (res != 0)
+        {
+            (void)gpio_interrupt_deinit();
+            g_gpio_irq = NULL;
+            
+            return 1;
+        }
+        
+        /* calculate crc */
+        res = mfrc522_basic_calculate_crc((uint8_t *)str, (uint8_t)strlen(str), &crc);
+        if (res != 0)
+        {
+            (void)gpio_interrupt_deinit();
+            g_gpio_irq = NULL;
+            
+            return 1;
+        }
+        
+        /* output */
+        mfrc522_interface_debug_print("%s crc is 0x%04X.\n", str, crc);
+        
+        /* basic deinit */
+        (void)mfrc522_basic_deinit();
+        (void)gpio_interrupt_deinit();
+        g_gpio_irq = NULL;
+        
+        return 0;
+    }
+    else if (strcmp("e_random", type) == 0)
+    {
+        uint8_t res;
+        uint8_t i;
+        uint8_t buf[25];
+        
+        /* set gpio irq */
+        g_gpio_irq = mfrc522_interrupt_irq_handler;
+        
+        /* gpio init */
+        res = gpio_interrupt_init();
+        if (res != 0)
+        {
+            return 1;
+        }
+        
+        /* basic int */
+        res = mfrc522_basic_init(interface, addr, a_callback);
+        if (res != 0)
+        {
+            (void)gpio_interrupt_deinit();
+            g_gpio_irq = NULL;
+            
+            return 1;
+        }
+        
+        /* get the random */
+        res = mfrc522_basic_generate_random(buf);
+        if (res != 0)
+        {
+            (void)gpio_interrupt_deinit();
+            g_gpio_irq = NULL;
+            
+            return 1;
+        }
+        
+        /* output */
+        for (i = 0; i < 25; i++)
+        {
+            mfrc522_interface_debug_print("0x%02X ", buf[i]);
+        }
+        mfrc522_interface_debug_print("\n");
+        
+        /* basic deinit */
+        (void)mfrc522_basic_deinit();
+        (void)gpio_interrupt_deinit();
+        g_gpio_irq = NULL;
+        
+        return 0;
+    }
+    else if (strcmp("h", type) == 0)
+    {
+        help:
+        mfrc522_interface_debug_print("Usage:\n");
+        mfrc522_interface_debug_print("  mfrc522 (-i | --information)\n");
+        mfrc522_interface_debug_print("  mfrc522 (-h | --help)\n");
+        mfrc522_interface_debug_print("  mfrc522 (-p | --port)\n");
+        mfrc522_interface_debug_print("  mfrc522 (-t reg | --test=reg) [--interface=<spi | iic | uart>] [--addr=<address>]\n");
+        mfrc522_interface_debug_print("  mfrc522 (-t mifare | --test=mifare) [--interface=<spi | iic | uart>] [--addr=<address>]\n");
+        mfrc522_interface_debug_print("  mfrc522 (-e mifare | --example=mifare) [--interface=<spi | iic | uart>] [--addr=<address>] --data=<hex>\n");
+        mfrc522_interface_debug_print("  mfrc522 (-e crc | --example=crc) [--interface=<spi | iic | uart>] [--addr=<address>] --str=<string>\n");
+        mfrc522_interface_debug_print("  mfrc522 (-e random | --example=random) [--interface=<spi | iic | uart>] [--addr=<address>]\n");
+        mfrc522_interface_debug_print("\n");
+        mfrc522_interface_debug_print("Options:\n");
+        mfrc522_interface_debug_print("      --addr=<address>    Set the addr pin.([default: 0])\n");
+        mfrc522_interface_debug_print("      --data=<hex>        Set the send data and it is hexadecimal.\n");
+        mfrc522_interface_debug_print("  -e <mifare | crc | random>, --example=<mifare | crc | random>\n");
+        mfrc522_interface_debug_print("                          Run the driver example.\n");
+        mfrc522_interface_debug_print("  -h, --help              Show the help.\n");
+        mfrc522_interface_debug_print("  -i, --information       Show the chip information.\n");
+        mfrc522_interface_debug_print("      --interface=<spi | iic | uart>\n");
+        mfrc522_interface_debug_print("                          Set the chip interface.([default: spi])\n");
+        mfrc522_interface_debug_print("  -p, --port              Display the pin connections of the current board.\n");
+        mfrc522_interface_debug_print("      --str=<string>      Set the crc string.\n");
+        mfrc522_interface_debug_print("  -t <reg | mifare>, --test=<reg | mifare>\n");
+        mfrc522_interface_debug_print("                          Run the driver test.\n");
+        
+        return 0;
+    }
+    else if (strcmp("i", type) == 0)
+    {
+        mfrc522_info_t info;
+        
+        /* print mfrc522 info */
+        mfrc522_info(&info);
+        mfrc522_interface_debug_print("mfrc522: chip is %s.\n", info.chip_name);
+        mfrc522_interface_debug_print("mfrc522: manufacturer is %s.\n", info.manufacturer_name);
+        mfrc522_interface_debug_print("mfrc522: interface is %s.\n", info.interface);
+        mfrc522_interface_debug_print("mfrc522: driver version is %d.%d.\n", info.driver_version / 1000, (info.driver_version % 1000) / 100);
+        mfrc522_interface_debug_print("mfrc522: min supply voltage is %0.1fV.\n", info.supply_voltage_min_v);
+        mfrc522_interface_debug_print("mfrc522: max supply voltage is %0.1fV.\n", info.supply_voltage_max_v);
+        mfrc522_interface_debug_print("mfrc522: max current is %0.2fmA.\n", info.max_current_ma);
+        mfrc522_interface_debug_print("mfrc522: max temperature is %0.1fC.\n", info.temperature_max);
+        mfrc522_interface_debug_print("mfrc522: min temperature is %0.1fC.\n", info.temperature_min);
+        
+        return 0;
+    }
+    else if (strcmp("p", type) == 0)
+    {
+        /* print pin connection */
+        mfrc522_interface_debug_print("mfrc522: SPI interface SCK connected to GPIO11(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: SPI interface MISO connected to GPIO9(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: SPI interface MOSI connected to GPIO10(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: SPI interface CS connected to GPIO8(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: IIC interface SCL connected to GPIO3(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: IIC interface SDA connected to GPIO2(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: UART interface TX connected to GPIO14(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: UART interface RX connected to GPIO15(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: INT connected to GPIO17(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: RESET connected to GPIO27(BCM).\n");
+        
+        return 0;
+    }
     else
     {
         return 5;

@@ -25,16 +25,19 @@
  * @brief     uart source file
  * @version   1.0.0
  * @author    Shifeng Li
- * @date      2021-02-12
+ * @date      2022-11-11
  *
  * <h3>history</h3>
  * <table>
  * <tr><th>Date        <th>Version  <th>Author      <th>Description
- * <tr><td>2021/02/12  <td>1.0      <td>Shifeng Li  <td>first upload
+ * <tr><td>2022/11/11  <td>1.0      <td>Shifeng Li  <td>first upload
  * </table>
  */
 
 #include "uart.h"
+#include <fcntl.h>
+#include <string.h>
+#include <termios.h>
 
 /**
  * @brief     uart config
@@ -48,105 +51,151 @@
  *            - 1 set config failed
  * @note      none
  */
-static uint8_t _uart_config(int fd, uint32_t baud_rate, uint8_t data_bits, char parity, uint8_t stop_bits)
+static uint8_t a_uart_config(int fd, uint32_t baud_rate, uint8_t data_bits, char parity, uint8_t stop_bits)
 {
     struct termios cfg;
     int speed;
     
-    if (tcgetattr(fd, &cfg) != 0)                       /* get cfg */
+    /* get cfg */
+    if (tcgetattr(fd, &cfg) != 0)
     {
         perror("uart: get cfg failed.\n");
-     
+        
         return 1;
     }
-    cfmakeraw(&cfg);                                    /* set raw mode */
-    switch (baud_rate)                                  /* set baud rate */
+    
+    /* set raw mode */
+    cfmakeraw(&cfg);
+    
+    /* set the baud rate */
+    switch (baud_rate)
     {
-        case 2400 :                                     /* 2400bps */
+        /* 2400bps */
+        case 2400 :
         {
             speed = B2400;
-         
+            
             break;
         }
-        case 4800 :                                     /* 4800bps */
+        
+        /* 4800bps */
+        case 4800 :
         {
             speed = B4800;
-         
+            
             break;
         }
-        case 9600 :                                     /* 9600bps */
+        
+        /* 9600bps */
+        case 9600 :
         {
             speed = B9600;
             
             break;
         }
-        case 19200 :                                    /* 19200bps */
+        
+        /* 19200bps */
+        case 19200 :
         {
             speed = B19200;
             
             break;
         }
-        case 38400 :                                    /* 38400bps */
+        
+        /* 38400bps */
+        case 38400 :
         {
             speed = B38400;
             
             break;
         }
-        case 115200 :                                   /* 115200bps */
+        
+        /* 115200bps */
+        case 115200 :
         {
             speed = B115200;
             
             break;
         }
-        default :                                       /* invalid param */
+        
+        /* invalid param */
+        default :
         {
             perror("uart: baud rate is invalid.\n");
-         
+            
             return 1;
         }
     }
-    cfsetispeed(&cfg, speed);                           /* set input speed */
-    cfsetospeed(&cfg, speed);                           /* set output speed */
-    switch (data_bits)                                  /* set data bits */
+    
+    /* set input speed */
+    if (cfsetispeed(&cfg, speed) != 0)
     {
-        case 5 :                                        /* 5 bit */
+        perror("uart: set speed failed.\n");
+        
+        return 1;
+    }
+    
+    /* set output speed */
+    if (cfsetospeed(&cfg, speed) != 0)
+    {
+        perror("uart: set speed failed.\n");
+        
+        return 1;
+    }
+    
+    /* set data bits */
+    switch (data_bits)
+    {
+        /* 5 bit */
+        case 5 :
         {
-            cfg.c_cflag &= ~CSIZE;                      /* mask flag */
+            cfg.c_cflag &= ~CSIZE;
             cfg.c_cflag |= CS5;
          
             break;
         }
-        case 6 :                                        /* 6 bit */
+        
+        /* 6 bit */
+        case 6 :
         {
-            cfg.c_cflag &= ~CSIZE;                      /* mask flag */
+            cfg.c_cflag &= ~CSIZE;
             cfg.c_cflag |= CS6;
             
             break;
         }
-        case 7 :                                        /* 6 bit */
+        
+        /* 7 bit */
+        case 7 :
         {
-            cfg.c_cflag &= ~CSIZE;                      /* mask flag */
+            cfg.c_cflag &= ~CSIZE;
             cfg.c_cflag |= CS7;
             
             break;
         }
-        case 8 :                                        /* 8 bit */
+        
+        /* 8 bit */
+        case 8 :
         {
-            cfg.c_cflag &= ~CSIZE;                      /* mask flag */
+            cfg.c_cflag &= ~CSIZE;
             cfg.c_cflag |= CS8;
             
             break;
         }
-        default :                                       /* invalid param */
+        
+        /* invalid param */
+        default :
         {
             perror("uart: data bits is invalid.\n");
             
             return 1;
         }
     }
-    switch (parity)                                     /* set parity */
+    
+    /* set parity */
+    switch (parity)
     {
-        case 'n' :                                      /* parity none */
+        /* parity none */
+        case 'n' :
         case 'N' : 
         {
             cfg.c_cflag &= ~PARENB;
@@ -154,7 +203,9 @@ static uint8_t _uart_config(int fd, uint32_t baud_rate, uint8_t data_bits, char 
             
             break;
         }
-        case 'o' :                                      /* parity odd */
+        
+        /* parity odd */
+        case 'o' :
         case 'O' :
         {
             cfg.c_cflag |= (PARODD | PARENB);
@@ -162,59 +213,82 @@ static uint8_t _uart_config(int fd, uint32_t baud_rate, uint8_t data_bits, char 
             
             break;
         }
+        
+        /* parity even */
         case 'e' :
-        case 'E' :                                      /* parity enb */
+        case 'E' :
         {
-         
             cfg.c_cflag |=  PARENB;
             cfg.c_cflag &= ~PARODD;
             cfg.c_iflag |= INPCK;
             
             break;
         }
-        default :                                       /* invalid param */
+        
+        /* invalid param */
+        default :
         {
             perror("uart: parity is invalid.\n");
             
             return 1;
         }
     }
-    switch (stop_bits)                                  /* set stop bits */
+    
+    /* set stop bits */
+    switch (stop_bits)
     {
-        case 1 :                                        /* 1 stop bit */
+        /* 1 stop bit */
+        case 1 :
         {
             cfg.c_cflag &= ~CSTOPB;
             
             break;
         }
-        case 2 :                                        /* 2 stop bits */
+        
+        /* 2 stop bits */
+        case 2 :
         {
             cfg.c_cflag |= CSTOPB;
             
             break;
         }
-        default :                                       /* invalid param */
+        
+        /* invalid param */
+        default :
         {
             perror("uart: stop bits is invalid.\n");
             
             return 1;
         }
     }
-    cfg.c_cc[VTIME] = 0;                                /* set min wait time 1*(1/10)s */
-    cfg.c_cc[VMIN] = 1;                                 /* set min char 1 */
-    tcflush(fd, TCIFLUSH);                              /* flush data */
-    if (tcsetattr(fd, TCSANOW, &cfg) != 0)              /* write cfg */
+    
+    /* set min wait time 1 * (1 / 10)s */
+    cfg.c_cc[VTIME] = 0;
+    
+    /* set min char 1 */
+    cfg.c_cc[VMIN] = 1;
+    
+    /* flush data */
+    if (tcflush(fd, TCIFLUSH) != 0)
+    {
+        perror("uart: uart flush failed.\n");
+            
+        return 1;
+    }
+    
+    /* write cfg */
+    if (tcsetattr(fd, TCSANOW, &cfg) != 0)
     {
         perror("uart: write cfg failed.\n");
         
         return 1;
     }
     
-    return 0;                                           /* success return 0 */
+    return 0;
 }
 
 /**
- * @brief     uart init
+ * @brief      uart init
  * @param[in]  *name points to a device name buffer
  * @param[out] *fd points to a uart handler buffer
  * @param[in]  baud_rate is the baud rate
@@ -228,16 +302,18 @@ static uint8_t _uart_config(int fd, uint32_t baud_rate, uint8_t data_bits, char 
  */
 uint8_t uart_init(char *name, int *fd, uint32_t baud_rate, uint8_t data_bits, char parity, uint8_t stop_bits)
 {
-    *fd = open (name, O_RDWR | O_NOCTTY);               /* open uart */
-    if ((*fd) < 0)                                      /* if open failed */
+    /* open the device */
+    *fd = open (name, O_RDWR | O_NOCTTY);
+    if ((*fd) < 0)
     {
         perror("uart: open failed.\n");
-     
-        return 1;                                       /* return error */
+        
+        return 1;
     }
     else
     {
-        return _uart_config(*fd, baud_rate, data_bits, parity, stop_bits);
+        /* default settings */
+        return a_uart_config(*fd, baud_rate, data_bits, parity, stop_bits);
     }
 }
 
@@ -251,15 +327,16 @@ uint8_t uart_init(char *name, int *fd, uint32_t baud_rate, uint8_t data_bits, ch
  */
 uint8_t uart_deinit(int fd)
 {
+    /* close the device */
     if (close(fd) < 0)
     {
-        perror("uart: close failed.\n");                /* close failed */
-     
-        return 1;                                       /* return error */
+        perror("uart: close failed.\n");
+        
+        return 1;
     }
     else
     {
-        return 0;                                       /* success return 0 */
+        return 0;
     }
 }
 
@@ -274,46 +351,49 @@ uint8_t uart_deinit(int fd)
  * @note      none
  */
 uint8_t uart_write(int fd, uint8_t *buf, uint32_t len)
-{    
-    if (write(fd, buf, len) < 0) 
+{
+    /* write data */
+    if (write(fd, buf, len) < 0)
     {
-        perror("uart: write failed.\n");                /* write failed */
-     
-        return 1;                                       /* return error */
+        perror("uart: write failed.\n");
+        
+        return 1;
     }
     else
     {
-        return 0;                                       /* success return 0 */
+        return 0;
     }
 }
 
 /**
- * @brief           uart read data
- * @param[in]       fd is the uart handle
- * @param[out]      *buf points to a data buffer
- * @param[in, out]  *len points to a length of the data buffer
- * @return          status code
- *                  - 0 success
- *                  - 1 read failed
- * @note            none
+ * @brief          uart read data
+ * @param[in]      fd is the uart handle
+ * @param[out]     *buf points to a data buffer
+ * @param[in, out] *len points to a length of the data buffer
+ * @return         status code
+ *                 - 0 success
+ *                 - 1 read failed
+ * @note           none
  */
 uint8_t uart_read(int fd, uint8_t *buf, uint32_t *len)
 {
     ssize_t l;
     
-    l = read(fd, buf, *len);                            /* read data */
+    /* read data */
+    l = read(fd, buf, *len);
     if (l < 0) 
     {
-        perror("uart: read failed.\n");                 /* close failed */
-     
-        return 1;                                       /* read error */
+        perror("uart: read failed.\n");
+        
+        return 1;
     }
     else
     {
-        *len = l;                                       /* set read data length */
-
-        return 0;                                       /* success return 0 */
-    }  
+        /* set read data length */
+        *len = l;
+        
+        return 0;
+    }
 }
 
 /**
@@ -325,15 +405,16 @@ uint8_t uart_read(int fd, uint8_t *buf, uint32_t *len)
  * @note      none
  */
 uint8_t uart_flush(int fd)
-{    
-    if (tcflush(fd, TCIOFLUSH) < 0)                     /* flush data */
+{
+    /* flush data */
+    if (tcflush(fd, TCIOFLUSH) < 0)
     {
-        perror("uart: flush failed.\n");                /* flush failed */
-     
-        return 1;                                       /* return error */
+        perror("uart: flush failed.\n");
+        
+        return 1;
     }
     else
     {
-        return 0;                                       /* success return 0 */
+        return 0;
     }
 }

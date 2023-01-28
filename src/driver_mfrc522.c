@@ -104,7 +104,7 @@
 
 /**
  * @brief      read bytes
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[in]  reg is the iic register address
  * @param[out] *buf points to a data buffer
  * @param[in]  len is the data length
@@ -179,7 +179,7 @@ static uint8_t a_mfrc522_read(mfrc522_handle_t *handle, uint8_t reg, uint8_t *bu
 
 /**
  * @brief     write bytes
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] reg is the iic register address
  * @param[in] *buf points to a data buffer
  * @param[in] len is the data length
@@ -250,7 +250,7 @@ static uint8_t a_mfrc522_write(mfrc522_handle_t *handle, uint8_t reg, uint8_t *b
 
 /**
  * @brief     set the chip interface
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] interface is the chip interface
  * @return    status code
  *            - 0 success
@@ -271,7 +271,7 @@ uint8_t mfrc522_set_interface(mfrc522_handle_t *handle, mfrc522_interface_t inte
 
 /**
  * @brief      get the chip interface
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *interface points to a chip interface buffer
  * @return     status code
  *             - 0 success
@@ -292,7 +292,7 @@ uint8_t mfrc522_get_interface(mfrc522_handle_t *handle, mfrc522_interface_t *int
 
 /**
  * @brief     set the iic address pin
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] addr_pin is the address pin
  * @return    status code
  *            - 0 success
@@ -313,8 +313,8 @@ uint8_t mfrc522_set_addr_pin(mfrc522_handle_t *handle, uint8_t addr_pin)
 
 /**
  * @brief      get the iic address pin
- * @param[in]  *handle points to a mfrc522 handle structure
- * @param[out] *addr_pin points to a address pin buffer
+ * @param[in]  *handle points to an mfrc522 handle structure
+ * @param[out] *addr_pin points to an address pin buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -334,7 +334,7 @@ uint8_t mfrc522_get_addr_pin(mfrc522_handle_t *handle, uint8_t *addr_pin)
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic, spi or uart initialization failed
@@ -614,7 +614,7 @@ uint8_t mfrc522_init(mfrc522_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic, spi or uart deinit failed
@@ -708,7 +708,7 @@ uint8_t mfrc522_deinit(mfrc522_handle_t *handle)
 
 /**
  * @brief     irq handler
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 run failed
@@ -739,8 +739,6 @@ uint8_t mfrc522_irq_handler(mfrc522_handle_t *handle)
     res = a_mfrc522_read(handle, MFRC522_REG_STATUS1, &prev, 1);             /* read status1 */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: read status1 failed.\n");              /* read status1 failed */
-        
         return 1;                                                            /* return error */
     }
     res = a_mfrc522_read(handle, MFRC522_REG_COMIRQ, &prev1, 1);             /* read comirq */
@@ -870,12 +868,12 @@ uint8_t mfrc522_irq_handler(mfrc522_handle_t *handle)
 
 /**
  * @brief         mfrc522 transceiver
- * @param[in]     *handle points to a mfrc522 handle structure
+ * @param[in]     *handle points to an mfrc522 handle structure
  * @param[in]     command is the set command
- * @param[in]     *in_buf points to a input buffer
+ * @param[in]     *in_buf points to an input buffer
  * @param[in]     in_len is the input length
- * @param[out]    *out_buf points to a output buffer
- * @param[in,out] *out_len points to a output length buffer
+ * @param[out]    *out_buf points to an output buffer
+ * @param[in,out] *out_len points to an output length buffer
  * @param[out]    *err points to an error buffer
  * @param[in]     ms is the timeout in ms
  * @return        status code
@@ -1212,7 +1210,7 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
 
 /**
  * @brief     enable or disable the analog part of the receiver
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -1257,7 +1255,7 @@ uint8_t mfrc522_set_receiver_analog(mfrc522_handle_t *handle, mfrc522_bool_t ena
 
 /**
  * @brief      get the analog part of the receiver status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -1294,7 +1292,7 @@ uint8_t mfrc522_get_receiver_analog(mfrc522_handle_t *handle, mfrc522_bool_t *en
 
 /**
  * @brief     enable or disable power down
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -1339,7 +1337,7 @@ uint8_t mfrc522_set_power_down(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get power down status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -1376,7 +1374,7 @@ uint8_t mfrc522_get_power_down(mfrc522_handle_t *handle, mfrc522_bool_t *enable)
 
 /**
  * @brief     set the command
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] command is the set command
  * @return    status code
  *            - 0 success
@@ -1421,7 +1419,7 @@ uint8_t mfrc522_set_command(mfrc522_handle_t *handle, mfrc522_command_t command)
 
 /**
  * @brief      get the command
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *command points to a set command buffer
  * @return     status code
  *             - 0 success
@@ -1458,7 +1456,7 @@ uint8_t mfrc522_get_command(mfrc522_handle_t *handle, mfrc522_command_t *command
 
 /**
  * @brief     enable or disable the interrupt1
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] type is the interrupt1 type
  * @param[in] enable is a bool value
  * @return    status code
@@ -1504,7 +1502,7 @@ uint8_t mfrc522_set_interrupt1(mfrc522_handle_t *handle, mfrc522_interrupt1_t ty
 
 /**
  * @brief      get the interrupt1 status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[in]  type is the interrupt1 type
  * @param[out] *enable points to a bool value buffer
  * @return     status code
@@ -1542,7 +1540,7 @@ uint8_t mfrc522_get_interrupt1(mfrc522_handle_t *handle, mfrc522_interrupt1_t ty
 
 /**
  * @brief     enable or disable interrupt1 pin invert
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -1587,7 +1585,7 @@ uint8_t mfrc522_set_interrupt1_pin_invert(mfrc522_handle_t *handle, mfrc522_bool
 
 /**
  * @brief      get the interrupt1 pin invert status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -1624,7 +1622,7 @@ uint8_t mfrc522_get_interrupt1_pin_invert(mfrc522_handle_t *handle, mfrc522_bool
 
 /**
  * @brief     set the interrupt1 mark
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] mark is the interrupt1 mark type
  * @return    status code
  *            - 0 success
@@ -1669,7 +1667,7 @@ uint8_t mfrc522_set_interrupt1_mark(mfrc522_handle_t *handle, mfrc522_interrupt_
 
 /**
  * @brief     enable or disable the interrupt2
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] type is the interrupt2 type
  * @param[in] enable is a bool value
  * @return    status code
@@ -1715,7 +1713,7 @@ uint8_t mfrc522_set_interrupt2(mfrc522_handle_t *handle, mfrc522_interrupt2_t ty
 
 /**
  * @brief      get the interrupt2 status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[in]  type is the interrupt2 type
  * @param[out] *enable points to a bool value buffer
  * @return     status code
@@ -1753,7 +1751,7 @@ uint8_t mfrc522_get_interrupt2(mfrc522_handle_t *handle, mfrc522_interrupt2_t ty
 
 /**
  * @brief     set the interrupt pin type
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] type is the interrupt pin type
  * @return    status code
  *            - 0 success
@@ -1798,7 +1796,7 @@ uint8_t mfrc522_set_interrupt_pin_type(mfrc522_handle_t *handle, mfrc522_interru
 
 /**
  * @brief      get the interrupt pin type
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *type points to an interrupt pin type buffer
  * @return     status code
  *             - 0 success
@@ -1835,7 +1833,7 @@ uint8_t mfrc522_get_interrupt_pin_type(mfrc522_handle_t *handle, mfrc522_interru
 
 /**
  * @brief     set the interrupt2 mark
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] mark is the interrupt2 mark type
  * @return    status code
  *            - 0 success
@@ -1880,7 +1878,7 @@ uint8_t mfrc522_set_interrupt2_mark(mfrc522_handle_t *handle, mfrc522_interrupt_
 
 /**
  * @brief      get the interrupt1 status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *status points to a status buffer
  * @return     status code
  *             - 0 success
@@ -1917,7 +1915,7 @@ uint8_t mfrc522_get_interrupt1_status(mfrc522_handle_t *handle, uint8_t *status)
 
 /**
  * @brief      get the interrupt2 status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *status points to a status buffer
  * @return     status code
  *             - 0 success
@@ -1954,7 +1952,7 @@ uint8_t mfrc522_get_interrupt2_status(mfrc522_handle_t *handle, uint8_t *status)
 
 /**
  * @brief      get the error
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *err points to an error buffer
  * @return     status code
  *             - 0 success
@@ -1991,7 +1989,7 @@ uint8_t mfrc522_get_error(mfrc522_handle_t *handle, uint8_t *err)
 
 /**
  * @brief      get the status1
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *status points to a status buffer
  * @return     status code
  *             - 0 success
@@ -2028,7 +2026,7 @@ uint8_t mfrc522_get_status1(mfrc522_handle_t *handle, uint8_t *status)
 
 /**
  * @brief      get the status2
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *status points to a status buffer
  * @return     status code
  *             - 0 success
@@ -2065,7 +2063,7 @@ uint8_t mfrc522_get_status2(mfrc522_handle_t *handle, uint8_t *status)
 
 /**
  * @brief      get the modem state
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *state points to a modem state buffer
  * @return     status code
  *             - 0 success
@@ -2102,7 +2100,7 @@ uint8_t mfrc522_get_modem_state(mfrc522_handle_t *handle, mfrc522_modem_state_t 
 
 /**
  * @brief     enable or disable mifare crypto1 on
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -2147,7 +2145,7 @@ uint8_t mfrc522_set_mifare_crypto1_on(mfrc522_handle_t *handle, mfrc522_bool_t e
 
 /**
  * @brief     enable or disable force iic high speed
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -2192,7 +2190,7 @@ uint8_t mfrc522_set_force_iic_high_speed(mfrc522_handle_t *handle, mfrc522_bool_
 
 /**
  * @brief      get the iic high speed status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -2229,7 +2227,7 @@ uint8_t mfrc522_get_force_iic_high_speed(mfrc522_handle_t *handle, mfrc522_bool_
 
 /**
  * @brief     enable or disable clear temperature error
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -2274,7 +2272,7 @@ uint8_t mfrc522_set_clear_temperature_error(mfrc522_handle_t *handle, mfrc522_bo
 
 /**
  * @brief      get the clear temperature error status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -2311,7 +2309,7 @@ uint8_t mfrc522_get_clear_temperature_error(mfrc522_handle_t *handle, mfrc522_bo
 
 /**
  * @brief     set the fifo data
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] *data points to a data buffer
  * @param[in] len is the data length
  * @return    status code
@@ -2358,7 +2356,7 @@ uint8_t mfrc522_set_fifo_data(mfrc522_handle_t *handle, uint8_t *data, uint8_t l
 
 /**
  * @brief      get the fifo data
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *data points to a data buffer
  * @param[in]  len is the data length
  * @return     status code
@@ -2405,7 +2403,7 @@ uint8_t mfrc522_get_fifo_data(mfrc522_handle_t *handle, uint8_t *data, uint8_t l
 
 /**
  * @brief      get the fifo level
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *level points to a level buffer
  * @return     status code
  *             - 0 success
@@ -2440,7 +2438,7 @@ uint8_t mfrc522_get_fifo_level(mfrc522_handle_t *handle, uint8_t *level)
 
 /**
  * @brief      flush the fifo
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @return     status code
  *             - 0 success
  *             - 1 flush fifo failed
@@ -2483,7 +2481,7 @@ uint8_t mfrc522_flush_fifo(mfrc522_handle_t *handle)
 
 /**
  * @brief      get the water level
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *level points to a level buffer
  * @return     status code
  *             - 0 success
@@ -2519,7 +2517,7 @@ uint8_t mfrc522_get_water_level(mfrc522_handle_t *handle, uint8_t *level)
 
 /**
  * @brief     set the water level
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] level is the water level
  * @return    status code
  *            - 0 success
@@ -2561,7 +2559,7 @@ uint8_t mfrc522_set_water_level(mfrc522_handle_t *handle, uint8_t level)
 
 /**
  * @brief     stop the timer
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 stop timer failed
@@ -2604,7 +2602,7 @@ uint8_t mfrc522_stop_timer(mfrc522_handle_t *handle)
 
 /**
  * @brief     start the timer
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 start timer failed
@@ -2647,7 +2645,7 @@ uint8_t mfrc522_start_timer(mfrc522_handle_t *handle)
 
 /**
  * @brief      get the rx last bits
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *bits points to a bits buffer
  * @return     status code
  *             - 0 success
@@ -2684,7 +2682,7 @@ uint8_t mfrc522_get_rx_last_bits(mfrc522_handle_t *handle, uint8_t *bits)
 
 /**
  * @brief     start the transmission of data
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 start send failed
@@ -2728,7 +2726,7 @@ uint8_t mfrc522_start_send(mfrc522_handle_t *handle)
 
 /**
  * @brief     stop the transmission of data
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 stop send failed
@@ -2771,7 +2769,7 @@ uint8_t mfrc522_stop_send(mfrc522_handle_t *handle)
 
 /**
  * @brief      get the tx last bits
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *bits points to a bits buffer
  * @return     status code
  *             - 0 success
@@ -2808,7 +2806,7 @@ uint8_t mfrc522_get_tx_last_bits(mfrc522_handle_t *handle, uint8_t *bits)
 
 /**
  * @brief     set the tx last bits
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] bits is the set bits
  * @return    status code
  *            - 0 success
@@ -2860,7 +2858,7 @@ uint8_t mfrc522_set_tx_last_bits(mfrc522_handle_t *handle, uint8_t bits)
 
 /**
  * @brief     set the rx align
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] align is the rx align
  * @return    status code
  *            - 0 success
@@ -2905,7 +2903,7 @@ uint8_t mfrc522_set_rx_align(mfrc522_handle_t *handle, mfrc522_rx_align_t align)
 
 /**
  * @brief      get the rx align
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *align points to a rx align buffer
  * @return     status code
  *             - 0 success
@@ -2942,7 +2940,7 @@ uint8_t mfrc522_get_rx_align(mfrc522_handle_t *handle, mfrc522_rx_align_t *align
 
 /**
  * @brief     enable or disable value clear after coll
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -2987,7 +2985,7 @@ uint8_t mfrc522_set_value_clear_after_coll(mfrc522_handle_t *handle, mfrc522_boo
 
 /**
  * @brief      get the value clear after coll status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3024,7 +3022,7 @@ uint8_t mfrc522_get_value_clear_after_coll(mfrc522_handle_t *handle, mfrc522_boo
 
 /**
  * @brief      get the collision position not valid bit status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3061,7 +3059,7 @@ uint8_t mfrc522_get_collision_position_not_valid(mfrc522_handle_t *handle, mfrc5
 
 /**
  * @brief      get the collision position
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *pos points to a position buffer
  * @return     status code
  *             - 0 success
@@ -3098,7 +3096,7 @@ uint8_t mfrc522_get_collision_position(mfrc522_handle_t *handle, uint8_t *pos)
 
 /**
  * @brief     enable or disable the crc msb first
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -3143,7 +3141,7 @@ uint8_t mfrc522_set_crc_msb_first(mfrc522_handle_t *handle, mfrc522_bool_t enabl
 
 /**
  * @brief      get the crc msb first
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3180,7 +3178,7 @@ uint8_t mfrc522_get_crc_msb_first(mfrc522_handle_t *handle, mfrc522_bool_t *enab
 
 /**
  * @brief     enable or disable the rf tx wait
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -3225,7 +3223,7 @@ uint8_t mfrc522_set_tx_wait_rf(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get the rf tx wait status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3262,7 +3260,7 @@ uint8_t mfrc522_get_tx_wait_rf(mfrc522_handle_t *handle, mfrc522_bool_t *enable)
 
 /**
  * @brief     set the mfin polarity
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] polarity is the mfin polarity
  * @return    status code
  *            - 0 success
@@ -3307,7 +3305,7 @@ uint8_t mfrc522_set_mfin_polarity(mfrc522_handle_t *handle, mfrc522_mfin_polarit
 
 /**
  * @brief      get the mfin polarity
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *polarity points to a mfin polarity buffer
  * @return     status code
  *             - 0 success
@@ -3344,7 +3342,7 @@ uint8_t mfrc522_get_mfin_polarity(mfrc522_handle_t *handle, mfrc522_mfin_polarit
 
 /**
  * @brief     set the crc preset
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] preset is the crc preset
  * @return    status code
  *            - 0 success
@@ -3389,7 +3387,7 @@ uint8_t mfrc522_set_crc_preset(mfrc522_handle_t *handle, mfrc522_crc_preset_t pr
 
 /**
  * @brief      get the crc preset
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *preset points to a crc preset buffer
  * @return     status code
  *             - 0 success
@@ -3426,7 +3424,7 @@ uint8_t mfrc522_get_crc_preset(mfrc522_handle_t *handle, mfrc522_crc_preset_t *p
 
 /**
  * @brief     enable or disable tx crc generation
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -3471,7 +3469,7 @@ uint8_t mfrc522_set_tx_crc_generation(mfrc522_handle_t *handle, mfrc522_bool_t e
 
 /**
  * @brief      get the tx crc generation status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3508,7 +3506,7 @@ uint8_t mfrc522_get_tx_crc_generation(mfrc522_handle_t *handle, mfrc522_bool_t *
 
 /**
  * @brief     set the tx speed
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] speed is the tx speed
  * @return    status code
  *            - 0 success
@@ -3553,7 +3551,7 @@ uint8_t mfrc522_set_tx_speed(mfrc522_handle_t *handle, mfrc522_speed_t speed)
 
 /**
  * @brief      get the tx speed
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *speed points to a tx speed buffer
  * @return     status code
  *             - 0 success
@@ -3590,7 +3588,7 @@ uint8_t mfrc522_get_tx_speed(mfrc522_handle_t *handle, mfrc522_speed_t *speed)
 
 /**
  * @brief     enable or disable the modulation invert
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -3635,7 +3633,7 @@ uint8_t mfrc522_set_modulation_invert(mfrc522_handle_t *handle, mfrc522_bool_t e
 
 /**
  * @brief      get the modulation invert status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3672,7 +3670,7 @@ uint8_t mfrc522_get_modulation_invert(mfrc522_handle_t *handle, mfrc522_bool_t *
 
 /**
  * @brief     enable or disable the rx crc generation
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -3717,7 +3715,7 @@ uint8_t mfrc522_set_rx_crc_generation(mfrc522_handle_t *handle, mfrc522_bool_t e
 
 /**
  * @brief      get the rx crc generation status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3754,7 +3752,7 @@ uint8_t mfrc522_get_rx_crc_generation(mfrc522_handle_t *handle, mfrc522_bool_t *
 
 /**
  * @brief     set the rx speed
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] speed is the rx speed
  * @return    status code
  *            - 0 success
@@ -3799,8 +3797,8 @@ uint8_t mfrc522_set_rx_speed(mfrc522_handle_t *handle, mfrc522_speed_t speed)
 
 /**
  * @brief      get the rx speed
- * @param[in]  *handle points to a mfrc522 handle structure
- * @param[out] *speed points to a rx speed buffer
+ * @param[in]  *handle points to an mfrc522 handle structure
+ * @param[out] *speed points to an rx speed buffer
  * @return     status code
  *             - 0 success
  *             - 1 get rx speed failed
@@ -3836,7 +3834,7 @@ uint8_t mfrc522_get_rx_speed(mfrc522_handle_t *handle, mfrc522_speed_t *speed)
 
 /**
  * @brief     enable or disable rx no error
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -3881,7 +3879,7 @@ uint8_t mfrc522_set_rx_no_error(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get the rx no error status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -3918,7 +3916,7 @@ uint8_t mfrc522_get_rx_no_error(mfrc522_handle_t *handle, mfrc522_bool_t *enable
 
 /**
  * @brief     enable or disable rx multiple
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -3963,7 +3961,7 @@ uint8_t mfrc522_set_rx_multiple(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get the rx multiple status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -4000,7 +3998,7 @@ uint8_t mfrc522_get_rx_multiple(mfrc522_handle_t *handle, mfrc522_bool_t *enable
 
 /**
  * @brief     enable or disable the antenna driver
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] driver is the antenna driver type
  * @param[in] enable is a bool value
  * @return    status code
@@ -4046,7 +4044,7 @@ uint8_t mfrc522_set_antenna_driver(mfrc522_handle_t *handle, mfrc522_antenna_dri
 
 /**
  * @brief      get the antenna driver status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[in]  driver is the antenna driver type
  * @param[out] *enable points to a bool value buffer
  * @return     status code
@@ -4084,7 +4082,7 @@ uint8_t mfrc522_get_antenna_driver(mfrc522_handle_t *handle, mfrc522_antenna_dri
 
 /**
  * @brief     enable or disable force 100 ask
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -4129,7 +4127,7 @@ uint8_t mfrc522_set_force_100_ask(mfrc522_handle_t *handle, mfrc522_bool_t enabl
 
 /**
  * @brief      get the force 100 ask status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -4166,7 +4164,7 @@ uint8_t mfrc522_get_force_100_ask(mfrc522_handle_t *handle, mfrc522_bool_t *enab
 
 /**
  * @brief     set the tx input
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] input is the tx input
  * @return    status code
  *            - 0 success
@@ -4211,7 +4209,7 @@ uint8_t mfrc522_set_tx_input(mfrc522_handle_t *handle, mfrc522_tx_input_t input)
 
 /**
  * @brief      get the tx input
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *input points to a tx input buffer
  * @return     status code
  *             - 0 success
@@ -4248,7 +4246,7 @@ uint8_t mfrc522_get_tx_input(mfrc522_handle_t *handle, mfrc522_tx_input_t *input
 
 /**
  * @brief     set the mfout input
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] input is the mfout input
  * @return    status code
  *            - 0 success
@@ -4293,7 +4291,7 @@ uint8_t mfrc522_set_mfout_input(mfrc522_handle_t *handle, mfrc522_mfout_input_t 
 
 /**
  * @brief      get the mfout input
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *input points to a mfout input buffer
  * @return     status code
  *             - 0 success
@@ -4330,7 +4328,7 @@ uint8_t mfrc522_get_mfout_input(mfrc522_handle_t *handle, mfrc522_mfout_input_t 
 
 /**
  * @brief     set the contactless uart input
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] input is the contactless uart input
  * @return    status code
  *            - 0 success
@@ -4375,7 +4373,7 @@ uint8_t mfrc522_set_contactless_uart_input(mfrc522_handle_t *handle, mfrc522_con
 
 /**
  * @brief      get the contactless uart input
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *input points to a contactless uart input buffer
  * @return     status code
  *             - 0 success
@@ -4412,7 +4410,7 @@ uint8_t mfrc522_get_contactless_uart_input(mfrc522_handle_t *handle, mfrc522_con
 
 /**
  * @brief     set the rx wait
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] t is the rx wait
  * @return    status code
  *            - 0 success
@@ -4464,8 +4462,8 @@ uint8_t mfrc522_set_rx_wait(mfrc522_handle_t *handle, uint8_t t)
 
 /**
  * @brief      get the rx wait
- * @param[in]  *handle points to a mfrc522 handle structure
- * @param[out] *t points to a rx wait buffer
+ * @param[in]  *handle points to an mfrc522 handle structure
+ * @param[out] *t points to an rx wait buffer
  * @return     status code
  *             - 0 success
  *             - 1 get rx wait failed
@@ -4501,7 +4499,7 @@ uint8_t mfrc522_get_rx_wait(mfrc522_handle_t *handle, uint8_t *t)
 
 /**
  * @brief     set the min level
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] level is the min level
  * @return    status code
  *            - 0 success
@@ -4553,7 +4551,7 @@ uint8_t mfrc522_set_min_level(mfrc522_handle_t *handle, uint8_t level)
 
 /**
  * @brief      get the min level
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *level points to a min level buffer
  * @return     status code
  *             - 0 success
@@ -4590,7 +4588,7 @@ uint8_t mfrc522_get_min_level(mfrc522_handle_t *handle, uint8_t *level)
 
 /**
  * @brief     set the collision level
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] level is the collision level
  * @return    status code
  *            - 0 success
@@ -4642,7 +4640,7 @@ uint8_t mfrc522_set_collision_level(mfrc522_handle_t *handle, uint8_t level)
 
 /**
  * @brief      get the collision level
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *level points to a collision level buffer
  * @return     status code
  *             - 0 success
@@ -4679,7 +4677,7 @@ uint8_t mfrc522_get_collision_level(mfrc522_handle_t *handle, uint8_t *level)
 
 /**
  * @brief     set the channel reception
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] reception is the channel reception
  * @return    status code
  *            - 0 success
@@ -4724,7 +4722,7 @@ uint8_t mfrc522_set_channel_reception(mfrc522_handle_t *handle, mfrc522_channel_
 
 /**
  * @brief      get the channel reception
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *reception points to a channel reception buffer
  * @return     status code
  *             - 0 success
@@ -4761,7 +4759,7 @@ uint8_t mfrc522_get_channel_reception(mfrc522_handle_t *handle, mfrc522_channel_
 
 /**
  * @brief     enable or disable fix iq
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -4806,7 +4804,7 @@ uint8_t mfrc522_set_fix_iq(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get the fix iq status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -4843,7 +4841,7 @@ uint8_t mfrc522_get_fix_iq(mfrc522_handle_t *handle, mfrc522_bool_t *enable)
 
 /**
  * @brief     enable or disable timer prescal even
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -4888,7 +4886,7 @@ uint8_t mfrc522_set_timer_prescal_even(mfrc522_handle_t *handle, mfrc522_bool_t 
 
 /**
  * @brief      get the timer prescal even status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -4925,7 +4923,7 @@ uint8_t mfrc522_get_timer_prescal_even(mfrc522_handle_t *handle, mfrc522_bool_t 
 
 /**
  * @brief     set the timer constant reception
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] t is the reception
  * @return    status code
  *            - 0 success
@@ -4977,7 +4975,7 @@ uint8_t mfrc522_set_timer_constant_reception(mfrc522_handle_t *handle, uint8_t t
 
 /**
  * @brief      get the timer constant reception
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *t points to a reception buffer
  * @return     status code
  *             - 0 success
@@ -5014,7 +5012,7 @@ uint8_t mfrc522_get_timer_constant_reception(mfrc522_handle_t *handle, uint8_t *
 
 /**
  * @brief     set the timer constant sync
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] t is the sync
  * @return    status code
  *            - 0 success
@@ -5066,7 +5064,7 @@ uint8_t mfrc522_set_timer_constant_sync(mfrc522_handle_t *handle, uint8_t t)
 
 /**
  * @brief      get the timer constant sync
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *t points to a sync buffer
  * @return     status code
  *             - 0 success
@@ -5103,7 +5101,7 @@ uint8_t mfrc522_get_timer_constant_sync(mfrc522_handle_t *handle, uint8_t *t)
 
 /**
  * @brief     set the tx wait
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] t is the wait
  * @return    status code
  *            - 0 success
@@ -5155,7 +5153,7 @@ uint8_t mfrc522_set_tx_wait(mfrc522_handle_t *handle, uint8_t t)
 
 /**
  * @brief      get the tx wait
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *t points to a wait buffer
  * @return     status code
  *             - 0 success
@@ -5192,7 +5190,7 @@ uint8_t mfrc522_get_tx_wait(mfrc522_handle_t *handle, uint8_t *t)
 
 /**
  * @brief     enable or disable parity disable
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -5237,7 +5235,7 @@ uint8_t mfrc522_set_parity_disable(mfrc522_handle_t *handle, mfrc522_bool_t enab
 
 /**
  * @brief      get the parity disable status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -5274,7 +5272,7 @@ uint8_t mfrc522_get_parity_disable(mfrc522_handle_t *handle, mfrc522_bool_t *ena
 
 /**
  * @brief     set the serial speed
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] t0 is the speed parm0
  * @param[in] t1 is the speed parm1
  * @return    status code
@@ -5345,7 +5343,7 @@ uint8_t mfrc522_set_serial_speed(mfrc522_handle_t *handle, uint8_t t0, uint8_t t
 
 /**
  * @brief      get the serial speed
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *t0 points to a speed parm0 buffer
  * @param[out] *t1 points to a speed parm1 buffer
  * @return     status code
@@ -5384,7 +5382,7 @@ uint8_t mfrc522_get_serial_speed(mfrc522_handle_t *handle, uint8_t *t0, uint8_t 
 
 /**
  * @brief      get the crc
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *crc points to a crc buffer
  * @return     status code
  *             - 0 success
@@ -5421,7 +5419,7 @@ uint8_t mfrc522_get_crc(mfrc522_handle_t *handle, uint16_t *crc)
 
 /**
  * @brief     set the modulation width
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] width is the modulation width
  * @return    status code
  *            - 0 success
@@ -5456,7 +5454,7 @@ uint8_t mfrc522_set_modulation_width(mfrc522_handle_t *handle, uint8_t width)
 
 /**
  * @brief      get the modulation width
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *width points to a modulation width buffer
  * @return     status code
  *             - 0 success
@@ -5491,7 +5489,7 @@ uint8_t mfrc522_get_modulation_width(mfrc522_handle_t *handle, uint8_t *width)
 
 /**
  * @brief     set the rx gain
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] gain is the rx gain
  * @return    status code
  *            - 0 success
@@ -5536,8 +5534,8 @@ uint8_t mfrc522_set_rx_gain(mfrc522_handle_t *handle, mfrc522_rx_gain_t gain)
 
 /**
  * @brief      get the rx gain
- * @param[in]  *handle points to a mfrc522 handle structure
- * @param[out] *gain points to a rx gain buffer
+ * @param[in]  *handle points to an mfrc522 handle structure
+ * @param[out] *gain points to an rx gain buffer
  * @return     status code
  *             - 0 success
  *             - 1 get rx gain failed
@@ -5573,7 +5571,7 @@ uint8_t mfrc522_get_rx_gain(mfrc522_handle_t *handle, mfrc522_rx_gain_t *gain)
 
 /**
  * @brief     set the cwgsn
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] n is the param
  * @return    status code
  *            - 0 success
@@ -5625,7 +5623,7 @@ uint8_t mfrc522_set_cwgsn(mfrc522_handle_t *handle, uint8_t n)
 
 /**
  * @brief      get the cwgsn
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *n points to a param buffer
  * @return     status code
  *             - 0 success
@@ -5662,7 +5660,7 @@ uint8_t mfrc522_get_cwgsn(mfrc522_handle_t *handle, uint8_t *n)
 
 /**
  * @brief     set the modgsn
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] n is the param
  * @return    status code
  *            - 0 success
@@ -5714,7 +5712,7 @@ uint8_t mfrc522_set_modgsn(mfrc522_handle_t *handle, uint8_t n)
 
 /**
  * @brief      get the modgsn
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *n points to a param buffer
  * @return     status code
  *             - 0 success
@@ -5751,7 +5749,7 @@ uint8_t mfrc522_get_modgsn(mfrc522_handle_t *handle, uint8_t *n)
 
 /**
  * @brief     set the cwgsp
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] n is the param
  * @return    status code
  *            - 0 success
@@ -5803,7 +5801,7 @@ uint8_t mfrc522_set_cwgsp(mfrc522_handle_t *handle, uint8_t n)
 
 /**
  * @brief      get the cwgsp
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *n ponts to a param buffer
  * @return     status code
  *             - 0 success
@@ -5840,7 +5838,7 @@ uint8_t mfrc522_get_cwgsp(mfrc522_handle_t *handle, uint8_t *n)
 
 /**
  * @brief     set the modgsp
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] n is the param
  * @return    status code
  *            - 0 success
@@ -5892,7 +5890,7 @@ uint8_t mfrc522_set_modgsp(mfrc522_handle_t *handle, uint8_t n)
 
 /**
  * @brief      get the modgsp
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *n points to a param buffer
  * @return     status code
  *             - 0 success
@@ -5929,7 +5927,7 @@ uint8_t mfrc522_get_modgsp(mfrc522_handle_t *handle, uint8_t *n)
 
 /**
  * @brief     enable or disable timer auto
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -5974,7 +5972,7 @@ uint8_t mfrc522_set_timer_auto(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get the timer auto status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -6011,7 +6009,7 @@ uint8_t mfrc522_get_timer_auto(mfrc522_handle_t *handle, mfrc522_bool_t *enable)
 
 /**
  * @brief     set the timer gated mode
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] mode is the timer gated mode
  * @return    status code
  *            - 0 success
@@ -6056,7 +6054,7 @@ uint8_t mfrc522_set_timer_gated_mode(mfrc522_handle_t *handle, mfrc522_timer_gat
 
 /**
  * @brief      get the timer gated mode
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *mode points to a timer gated mode buffer
  * @return     status code
  *             - 0 success
@@ -6093,7 +6091,7 @@ uint8_t mfrc522_get_timer_gated_mode(mfrc522_handle_t *handle, mfrc522_timer_gat
 
 /**
  * @brief     enable or disable timer auto restart
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -6138,7 +6136,7 @@ uint8_t mfrc522_set_timer_auto_restart(mfrc522_handle_t *handle, mfrc522_bool_t 
 
 /**
  * @brief      get the timer auto restart status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -6175,7 +6173,7 @@ uint8_t mfrc522_get_timer_auto_restart(mfrc522_handle_t *handle, mfrc522_bool_t 
 
 /**
  * @brief     set the timer prescaler
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] t is the prescaler
  * @return    status code
  *            - 0 success
@@ -6235,7 +6233,7 @@ uint8_t mfrc522_set_timer_prescaler(mfrc522_handle_t *handle, uint16_t t)
 
 /**
  * @brief      get the timer prescaler
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *t points to a prescaler buffer
  * @return     status code
  *             - 0 success
@@ -6279,7 +6277,7 @@ uint8_t mfrc522_get_timer_prescaler(mfrc522_handle_t *handle, uint16_t *t)
 
 /**
  * @brief     set the timer reload
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] reload is the reload
  * @return    status code
  *            - 0 success
@@ -6317,7 +6315,7 @@ uint8_t mfrc522_set_timer_reload(mfrc522_handle_t *handle, uint16_t reload)
 
 /**
  * @brief      get the timer reload
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *reload points to a reload buffer
  * @return     status code
  *             - 0 success
@@ -6354,7 +6352,7 @@ uint8_t mfrc522_get_timer_reload(mfrc522_handle_t *handle, uint16_t *reload)
 
 /**
  * @brief      get the timer counter
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *cnt points to a counter buffer
  * @return     status code
  *             - 0 success
@@ -6391,7 +6389,7 @@ uint8_t mfrc522_get_timer_counter(mfrc522_handle_t *handle, uint16_t *cnt)
 
 /**
  * @brief     set the test bus signal 1
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] s is the set signal
  * @return    status code
  *            - 0 success
@@ -6443,7 +6441,7 @@ uint8_t mfrc522_set_test_bus_signal_1(mfrc522_handle_t *handle, uint8_t s)
 
 /**
  * @brief      get the test bus signal 1
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *s points to a set signal buffer
  * @return     status code
  *             - 0 success
@@ -6480,7 +6478,7 @@ uint8_t mfrc522_get_test_bus_signal_1(mfrc522_handle_t *handle, uint8_t *s)
 
 /**
  * @brief     set the test bus signal 2
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] s is the set signal
  * @return    status code
  *            - 0 success
@@ -6532,7 +6530,7 @@ uint8_t mfrc522_set_test_bus_signal_2(mfrc522_handle_t *handle, uint8_t s)
 
 /**
  * @brief      get the test bus signal 2
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *s points to a set signal buffer
  * @return     status code
  *             - 0 success
@@ -6569,7 +6567,7 @@ uint8_t mfrc522_get_test_bus_signal_2(mfrc522_handle_t *handle, uint8_t *s)
 
 /**
  * @brief     enable or disable test bus flip
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -6614,7 +6612,7 @@ uint8_t mfrc522_set_test_bus_flip(mfrc522_handle_t *handle, mfrc522_bool_t enabl
 
 /**
  * @brief      get the test bus flip status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -6651,7 +6649,7 @@ uint8_t mfrc522_get_test_bus_flip(mfrc522_handle_t *handle, mfrc522_bool_t *enab
 
 /**
  * @brief     enable or disable test prbs9
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -6696,7 +6694,7 @@ uint8_t mfrc522_set_test_prbs9(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get the test prbs9 status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -6733,7 +6731,7 @@ uint8_t mfrc522_get_test_prbs9(mfrc522_handle_t *handle, mfrc522_bool_t *enable)
  
 /**
  * @brief     enable or disable test prbs15
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -6778,7 +6776,7 @@ uint8_t mfrc522_set_test_prbs15(mfrc522_handle_t *handle, mfrc522_bool_t enable)
 
 /**
  * @brief      get the test prbs15 status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -6815,7 +6813,7 @@ uint8_t mfrc522_get_test_prbs15(mfrc522_handle_t *handle, mfrc522_bool_t *enable
 
 /**
  * @brief     enable or disable test rs232 line
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -6860,7 +6858,7 @@ uint8_t mfrc522_set_test_rs232_line(mfrc522_handle_t *handle, mfrc522_bool_t ena
 
 /**
  * @brief      get the test rs232 line status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -6897,7 +6895,7 @@ uint8_t mfrc522_get_test_rs232_line(mfrc522_handle_t *handle, mfrc522_bool_t *en
 
 /**
  * @brief     set the test pin enable
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] pin is the set pin map
  * @return    status code
  *            - 0 success
@@ -6949,7 +6947,7 @@ uint8_t mfrc522_set_test_pin_enable(mfrc522_handle_t *handle, uint8_t pin)
 
 /**
  * @brief      get the test pin enable
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *pin points to a pin map buffer
  * @return     status code
  *             - 0 success
@@ -6986,7 +6984,7 @@ uint8_t mfrc522_get_test_pin_enable(mfrc522_handle_t *handle, uint8_t *pin)
 
 /**
  * @brief     enable or disable test port io
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -7031,7 +7029,7 @@ uint8_t mfrc522_set_test_port_io(mfrc522_handle_t *handle, mfrc522_bool_t enable
 
 /**
  * @brief      get the test port io status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -7068,7 +7066,7 @@ uint8_t mfrc522_get_test_port_io(mfrc522_handle_t *handle, mfrc522_bool_t *enabl
 
 /**
  * @brief     set the test pin value
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] value is the set value
  * @return    status code
  *            - 0 success
@@ -7120,7 +7118,7 @@ uint8_t mfrc522_set_test_pin_value(mfrc522_handle_t *handle, uint8_t value)
 
 /**
  * @brief      get the test pin value
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *value points to a set value buffer
  * @return     status code
  *             - 0 success
@@ -7157,7 +7155,7 @@ uint8_t mfrc522_get_test_pin_value(mfrc522_handle_t *handle, uint8_t *value)
 
 /**
  * @brief      get the test bus
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *bus points to a bus buffer
  * @return     status code
  *             - 0 success
@@ -7192,7 +7190,7 @@ uint8_t mfrc522_get_test_bus(mfrc522_handle_t *handle, uint8_t *bus)
 
 /**
  * @brief     enable or disable test amp rcv
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -7237,7 +7235,7 @@ uint8_t mfrc522_set_test_amp_rcv(mfrc522_handle_t *handle, mfrc522_bool_t enable
 
 /**
  * @brief      get the test amp rcv status
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
@@ -7274,7 +7272,7 @@ uint8_t mfrc522_get_test_amp_rcv(mfrc522_handle_t *handle, mfrc522_bool_t *enabl
 
 /**
  * @brief     set the self test
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] test is the self test param
  * @return    status code
  *            - 0 success
@@ -7326,7 +7324,7 @@ uint8_t mfrc522_set_self_test(mfrc522_handle_t *handle, uint8_t test)
 
 /**
  * @brief      get the self test
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *test points to a self test buffer
  * @return     status code
  *             - 0 success
@@ -7363,7 +7361,7 @@ uint8_t mfrc522_get_self_test(mfrc522_handle_t *handle, uint8_t *test)
 
 /**
  * @brief      get the version
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *id points to an id buffer
  * @param[out] *version points to a version buffer
  * @return     status code
@@ -7402,7 +7400,7 @@ uint8_t mfrc522_get_version(mfrc522_handle_t *handle, uint8_t *id, uint8_t *vers
 
 /**
  * @brief     set the test analog control aux 1
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] control is the aux control
  * @return    status code
  *            - 0 success
@@ -7447,8 +7445,8 @@ uint8_t mfrc522_set_test_analog_control_aux_1(mfrc522_handle_t *handle, mfrc522_
 
 /**
  * @brief      get the test analog control aux 1
- * @param[in]  *handle points to a mfrc522 handle structure
- * @param[out] *control points to a aux control buffer
+ * @param[in]  *handle points to an mfrc522 handle structure
+ * @param[out] *control points to an aux control buffer
  * @return     status code
  *             - 0 success
  *             - 1 get test analog control aux 1
@@ -7484,7 +7482,7 @@ uint8_t mfrc522_get_test_analog_control_aux_1(mfrc522_handle_t *handle, mfrc522_
 
 /**
  * @brief     set the test analog control aux 2
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] control is the aux control
  * @return    status code
  *            - 0 success
@@ -7529,8 +7527,8 @@ uint8_t mfrc522_set_test_analog_control_aux_2(mfrc522_handle_t *handle, mfrc522_
 
 /**
  * @brief      get the test analog control aux 2
- * @param[in]  *handle points to a mfrc522 handle structure
- * @param[out] *control points to a aux control buffer
+ * @param[in]  *handle points to an mfrc522 handle structure
+ * @param[out] *control points to an aux control buffer
  * @return     status code
  *             - 0 success
  *             - 1 get test analog control aux 2
@@ -7566,7 +7564,7 @@ uint8_t mfrc522_get_test_analog_control_aux_2(mfrc522_handle_t *handle, mfrc522_
 
 /**
  * @brief     set the test dac 1
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] dac is the set dac
  * @return    status code
  *            - 0 success
@@ -7610,7 +7608,7 @@ uint8_t mfrc522_set_test_dac_1(mfrc522_handle_t *handle, uint8_t dac)
 
 /**
  * @brief      get the test dac 1
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *dac points to a set dac buffer
  * @return     status code
  *             - 0 success
@@ -7647,7 +7645,7 @@ uint8_t mfrc522_get_test_dac_1(mfrc522_handle_t *handle, uint8_t *dac)
 
 /**
  * @brief     set the test dac 2
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] dac is the set dac
  * @return    status code
  *            - 0 success
@@ -7691,7 +7689,7 @@ uint8_t mfrc522_set_test_dac_2(mfrc522_handle_t *handle, uint8_t dac)
 
 /**
  * @brief      get the test dac 2
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *dac points to a set dac buffer
  * @return     status code
  *             - 0 success
@@ -7728,7 +7726,7 @@ uint8_t mfrc522_get_test_dac_2(mfrc522_handle_t *handle, uint8_t *dac)
 
 /**
  * @brief      get the test adc
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[out] *adc_i points to an adc i buffer
  * @param[out] *adc_q points to an adc q buffer
  * @return     status code
@@ -7767,7 +7765,7 @@ uint8_t mfrc522_get_test_adc(mfrc522_handle_t *handle, uint8_t *adc_i, uint8_t *
 
 /**
  * @brief     set the chip register
- * @param[in] *handle points to a mfrc522 handle structure
+ * @param[in] *handle points to an mfrc522 handle structure
  * @param[in] reg is the register address
  * @param[in] *buf points to a data buffer
  * @param[in] len is the data buffer length
@@ -7794,7 +7792,7 @@ uint8_t mfrc522_set_reg(mfrc522_handle_t *handle, uint8_t reg, uint8_t *buf, uin
 
 /**
  * @brief      get the chip register
- * @param[in]  *handle points to a mfrc522 handle structure
+ * @param[in]  *handle points to an mfrc522 handle structure
  * @param[in]  reg is the register address
  * @param[out] *buf points to a data buffer
  * @param[in]  len is the data buffer length
@@ -7821,7 +7819,7 @@ uint8_t mfrc522_get_reg(mfrc522_handle_t *handle, uint8_t reg, uint8_t *buf, uin
 
 /**
  * @brief      get chip information
- * @param[out] *info points to a mfrc522 info structure
+ * @param[out] *info points to an mfrc522 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL

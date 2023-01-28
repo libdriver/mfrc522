@@ -25,25 +25,22 @@
  * @brief     uart header file
  * @version   1.0.0
  * @author    Shifeng Li
- * @date      2021-02-12
+ * @date      2022-11-11
  *
  * <h3>history</h3>
  * <table>
  * <tr><th>Date        <th>Version  <th>Author      <th>Description
- * <tr><td>2021/02/12  <td>1.0      <td>Shifeng Li  <td>first upload
+ * <tr><td>2022/11/11  <td>1.0      <td>Shifeng Li  <td>first upload
  * </table>
  */
 
 #ifndef UART_H
 #define UART_H
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-#include <termios.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,7 +53,7 @@ extern "C" {
  */
 
 /**
- * @brief     uart init
+ * @brief      uart init
  * @param[in]  *name points to a device name buffer
  * @param[out] *fd points to a uart handler buffer
  * @param[in]  baud_rate is the baud rate
@@ -93,14 +90,14 @@ uint8_t uart_deinit(int fd);
 uint8_t uart_write(int fd, uint8_t *buf, uint32_t len);
 
 /**
- * @brief           uart read data
- * @param[in]       fd is the uart handle
- * @param[out]      *buf points to a data buffer
- * @param[in, out]  *len points to a length of the data buffer
- * @return          status code
- *                  - 0 success
- *                  - 1 read failed
- * @note            none
+ * @brief          uart read data
+ * @param[in]      fd is the uart handle
+ * @param[out]     *buf points to a data buffer
+ * @param[in, out] *len points to a length of the data buffer
+ * @return         status code
+ *                 - 0 success
+ *                 - 1 read failed
+ * @note           none
  */
 uint8_t uart_read(int fd, uint8_t *buf, uint32_t *len);
 

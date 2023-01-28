@@ -118,9 +118,9 @@ uint8_t mfrc522_interface_iic_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint
 {
     uint8_t res;
     
-    __disable_irq();
+    __set_BASEPRI(1);
     res = iic_read(addr, reg, buf, len);
-    __enable_irq();
+    __set_BASEPRI(0);
     
     return res;
 }
@@ -140,9 +140,9 @@ uint8_t mfrc522_interface_iic_write(uint8_t addr, uint8_t reg, uint8_t *buf, uin
 {
     uint8_t res;
     
-    __disable_irq();
+    __set_BASEPRI(1);
     res = iic_write(addr, reg, buf, len);
-    __enable_irq();
+    __set_BASEPRI(0);
     
     return res;
 }
@@ -284,16 +284,16 @@ void mfrc522_interface_debug_print(const char *const fmt, ...)
 {
 #ifndef NO_DEBUG
     char str[256];
-    uint8_t len;
+    uint16_t len;
     va_list args;
     
     memset((char *)str, 0, sizeof(char) * 256); 
     va_start(args, fmt);
-    vsnprintf((char *)str, 256, (char const *)fmt, args);
+    vsnprintf((char *)str, 255, (char const *)fmt, args);
     va_end(args);
-        
+    
     len = strlen((char *)str);
-    (void)uart1_write((uint8_t *)str, len);
+    (void)uart_write((uint8_t *)str, len);
 #endif
 }
 
