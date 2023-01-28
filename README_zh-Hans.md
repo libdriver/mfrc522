@@ -47,6 +47,8 @@ NTAG21x驱动可参考https://github.com/hepingood/ntag21x
 
 /project目录包含了常用Linux与单片机开发板的工程样例。所有工程均采用shell脚本作为调试方法，详细内容可参考每个工程里面的README.md。
 
+/misra目录包含了LibDriver MISRA代码扫描结果。
+
 ### 安装
 
 参考/interface目录下与平台无关的IIC, SPI, UART总线模板，完成指定平台的IIC, SPI, UART总线驱动。

@@ -258,7 +258,22 @@ uint8_t mfrc522(uint8_t argc, char **argv)
                 /* loop */
                 for (i = 0; i < l; i++)
                 {
-                    hex_data += (p[i] - '0') * (uint32_t)pow(16, l - i - 1);
+                    if ((p[i] <= '9') && (p[i] >= '0'))
+                    {
+                        hex_data += (p[i] - '0') * (uint32_t)pow(16, l - i - 1);
+                    }
+                    else if ((p[i] <= 'F') && (p[i] >= 'A'))
+                    {
+                        hex_data += ((p[i] - 'A') + 10) * (uint32_t)pow(16, l - i - 1);
+                    }
+                    else if ((p[i] <= 'f') && (p[i] >= 'a'))
+                    {
+                        hex_data += ((p[i] - 'a') + 10) * (uint32_t)pow(16, l - i - 1);
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
                 
                 /* copy the data */
