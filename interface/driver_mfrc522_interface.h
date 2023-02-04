@@ -194,7 +194,7 @@ uint8_t mfrc522_interface_uart_deinit(void);
 uint16_t mfrc522_interface_uart_read(uint8_t *buf, uint16_t len);
 
 /**
- * @brief     interface uate write
+ * @brief     interface uart write
  * @param[in] *buf points to a data buffer
  * @param[in] len is the length of the data buffer
  * @return    status code
