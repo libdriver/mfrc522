@@ -896,7 +896,7 @@ uint8_t mfrc522_register_test(mfrc522_interface_t interface, uint8_t addr)
         
         return 1;
     }
-    mfrc522_interface_debug_print("mfrc522: erro is 0x%02X.\n", reg);
+    mfrc522_interface_debug_print("mfrc522: error is 0x%02X.\n", reg);
     
     /* mfrc522_get_status1 */
     mfrc522_interface_debug_print("mfrc522: mfrc522_get_status1 test.\n");

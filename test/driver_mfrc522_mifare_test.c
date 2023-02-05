@@ -853,8 +853,8 @@ uint8_t mfrc522_mifare_test(mfrc522_interface_t interface, uint8_t addr)
         mfrc522_interface_debug_print("mfrc522: unknown type.\n");
     }
     
-    /* mifare anticoll test */
-    mfrc522_interface_debug_print("mfrc522: mifare anticoll test.\n");
+    /* mifare anti-coll test */
+    mfrc522_interface_debug_print("mfrc522: mifare anti-coll test.\n");
     
     /* disable cypto1 on */
     res = mfrc522_set_mifare_crypto1_on(&gs_handle, MFRC522_BOOL_FALSE);
@@ -886,7 +886,7 @@ uint8_t mfrc522_mifare_test(mfrc522_interface_t interface, uint8_t addr)
         return 1;
     }
     
-    /* mifare anticoll */
+    /* mifare anti-coll */
     out_len = 64;
     in_buf[0] = 0x93;
     in_buf[1] = 0x20;

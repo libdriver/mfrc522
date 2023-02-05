@@ -57,17 +57,17 @@
 #define UART_DEVICE_NAME "/dev/ttyS0"       /**< uart device name */
 
 /**
- * @brief iic device hanble definition
+ * @brief iic device handle definition
  */
 static int gs_iic_fd;                       /**< iic handle */
 
 /**
- * @brief spi device hanble definition
+ * @brief spi device handle definition
  */
 static int gs_spi_fd;                       /**< spi handle */
 
 /**
- * @brief uart device hanble definition
+ * @brief uart device handle definition
  */
 static int gs_uart_fd;                      /**< uart handle */
 
@@ -266,7 +266,7 @@ uint16_t mfrc522_interface_uart_read(uint8_t *buf, uint16_t len)
 }
 
 /**
- * @brief     interface uate write
+ * @brief     interface uart write
  * @param[in] *buf points to a data buffer
  * @param[in] len is the length of the data buffer
  * @return    status code

@@ -56,7 +56,7 @@
 #define MFRC522_REG_DIVIEN                0x03        /**< enable and disable interrupt request control bits register */
 #define MFRC522_REG_COMIRQ                0x04        /**< interrupt request bits register */
 #define MFRC522_REG_DIVIRQ                0x05        /**< interrupt request bits register */
-#define MFRC522_REG_ERROR                 0x06        /**< error bits showing the error status of the last command execued register */
+#define MFRC522_REG_ERROR                 0x06        /**< error bits showing the error status of the last command executed register */
 #define MFRC522_REG_STATUS1               0x07        /**< communication status bits register */
 #define MFRC522_REG_STATUS2               0x08        /**< receiver and transmitter status bits register */
 #define MFRC522_REG_FIFO_DATA             0x09        /**< input and output of 64 byte FIFO buffer register */
@@ -452,7 +452,7 @@ uint8_t mfrc522_init(mfrc522_handle_t *handle)
     }
     if (handle->spi_write == NULL)                                           /* check spi_write */
     {
-        handle->debug_print("mfrc522: spi_write is null.\n");                /* spi_readspi_writeis null */
+        handle->debug_print("mfrc522: spi_write is null.\n");                /* spi_read_spi_write is null */
         
         return 3;                                                            /* return error */
     }
@@ -1019,33 +1019,33 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
         return 1;                                                                   /* return error */
     }
     
-    /* set bit framing */
-    if (command == MFRC522_COMMAND_TRANSCEIVE)                                      /* if transceive*/
+    /* set the bit framing */
+    if (command == MFRC522_COMMAND_TRANSCEIVE)                                      /* if transceiver */
     {
-        res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);            /* read bit framing */
+        res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);            /* read the bit framing */
         if (res != 0)                                                               /* check the result */
         {
-            handle->debug_print("mfrc522: read bit framing failed.\n");             /* read bit framing failed */
+            handle->debug_print("mfrc522: read bit framing failed.\n");             /* read the bit framing failed */
             
             return 1;                                                               /* return error */
         }
         prev |= 1 << 7;                                                             /* set the start bit */
-        res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);           /* write bit framing */
+        res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);           /* write the bit framing */
         if (res != 0)                                                               /* check the result */
         {
-            handle->debug_print("mfrc522: write bit framing failed.\n");            /* write bit framing failed */
+            handle->debug_print("mfrc522: write bit framing failed.\n");            /* write the bit framing failed */
             
             return 1;                                                               /* return error */
         }
     }
     
     /* set the wait bit */
-    if (command == MFRC522_COMMAND_MF_AUTHENT)                                      /* if authent */
+    if (command == MFRC522_COMMAND_MF_AUTHENT)                                      /* if authentic */
     {
         wait_for = (1 << MFRC522_INTERRUPT_IDLE) | 
                    (1 << MFRC522_INTERRUPT_TIMER);                                  /* if idle && timer */
     }
-    else if (command == MFRC522_COMMAND_TRANSCEIVE)                                 /* if transceive */
+    else if (command == MFRC522_COMMAND_TRANSCEIVE)                                 /* if transceiver */
     {
         wait_for = (1 << MFRC522_INTERRUPT_RX) | 
                    (1 << MFRC522_INTERRUPT_TIMER);                                  /* if rx && timer */
@@ -1078,20 +1078,20 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
     }
     
     /* end */
-    if (command == MFRC522_COMMAND_TRANSCEIVE)                                      /* if transceive*/
+    if (command == MFRC522_COMMAND_TRANSCEIVE)                                      /* if transceiver */
     {
-        res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);            /* read bit framing */
+        res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);            /* read the bit framing */
         if (res != 0)                                                               /* check the result */
         {
-            handle->debug_print("mfrc522: read bit framing failed.\n");             /* read bit framing failed */
+            handle->debug_print("mfrc522: read bit framing failed.\n");             /* read the bit framing failed */
             
             return 1;                                                               /* return error */
         }
         prev &= ~(1 << 7);                                                          /* clear the settings */
-        res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);           /* write bit framing */
+        res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);           /* write the bit framing */
         if (res != 0)                                                               /* check the result */
         {
-            handle->debug_print("mfrc522: write bit framing failed.\n");            /* write bit framing failed */
+            handle->debug_print("mfrc522: write bit framing failed.\n");            /* write the bit framing failed */
             
             return 1;                                                               /* return error */
         }
@@ -1121,7 +1121,7 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
     }
     
     /* get the fifo */
-    if ((command == MFRC522_COMMAND_TRANSCEIVE) && ((*out_len) != 0))               /* if transceive and need get from fifo */
+    if ((command == MFRC522_COMMAND_TRANSCEIVE) && ((*out_len) != 0))               /* if transceiver and need get from fifo */
     {
         uint8_t level;
         
@@ -2704,19 +2704,19 @@ uint8_t mfrc522_start_send(mfrc522_handle_t *handle)
         return 3;                                                            /* return error */
     }
     
-    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read bit framing */
+    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read bit framing failed */
+        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read the bit framing failed */
         
         return 1;                                                            /* return error */
     }
     prev &= ~(1 << 7);                                                       /* clear the settings */
     prev |= 1 << 7;                                                          /* set the start bit */
-    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write bit framing */
+    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write bit framing failed */
+        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write the bit framing failed */
         
         return 1;                                                            /* return error */
     }
@@ -2748,18 +2748,18 @@ uint8_t mfrc522_stop_send(mfrc522_handle_t *handle)
         return 3;                                                            /* return error */
     }
     
-    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read bit framing */
+    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read bit framing failed */
+        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read the bit framing failed */
         
         return 1;                                                            /* return error */
     }
     prev &= ~(1 << 7);                                                       /* clear the settings */
-    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write bit framing */
+    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write bit framing failed */
+        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write the bit framing failed */
         
         return 1;                                                            /* return error */
     }
@@ -2792,10 +2792,10 @@ uint8_t mfrc522_get_tx_last_bits(mfrc522_handle_t *handle, uint8_t *bits)
         return 3;                                                       /* return error */
     }
     
-    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);    /* read bit framing */
+    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);    /* read the bit framing */
     if (res != 0)                                                       /* check the result */
     {
-        handle->debug_print("mfrc522: read bit framing failed.\n");     /* read bit framing failed */
+        handle->debug_print("mfrc522: read bit framing failed.\n");     /* read the bit framing failed */
         
         return 1;                                                       /* return error */
     }
@@ -2831,24 +2831,24 @@ uint8_t mfrc522_set_tx_last_bits(mfrc522_handle_t *handle, uint8_t bits)
     }
     if (bits > 7)                                                            /* check the length */
     {
-        handle->debug_print("mfrc522: bits is over 7.\n");                   /* bits is over 7 */
+        handle->debug_print("mfrc522: bits is over 7.\n");                   /* bits are over 7 */
         
         return 4;                                                            /* return error */
     }
     
-    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read bit framing */
+    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read bit framing failed */
+        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read the bit framing failed */
         
         return 1;                                                            /* return error */
     }
     prev &= ~(7 << 0);                                                       /* clear the settings */
     prev |= bits << 0;                                                       /* set the bits */
-    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write bit framing */
+    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write bit framing failed */
+        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write the bit framing failed */
         
         return 1;                                                            /* return error */
     }
@@ -2881,19 +2881,19 @@ uint8_t mfrc522_set_rx_align(mfrc522_handle_t *handle, mfrc522_rx_align_t align)
         return 3;                                                            /* return error */
     }
     
-    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read bit framing */
+    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read bit framing failed */
+        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read the bit framing failed */
         
         return 1;                                                            /* return error */
     }
     prev &= ~(7 << 4);                                                       /* clear the settings */
-    prev |= align << 4;                                                      /* set the align */
-    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write bit framing */
+    prev |= align << 4;                                                      /* set align */
+    res = a_mfrc522_write(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);        /* write the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write bit framing failed */
+        handle->debug_print("mfrc522: write bit framing failed.\n");         /* write the bit framing failed */
         
         return 1;                                                            /* return error */
     }
@@ -2926,14 +2926,14 @@ uint8_t mfrc522_get_rx_align(mfrc522_handle_t *handle, mfrc522_rx_align_t *align
         return 3;                                                            /* return error */
     }
     
-    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read bit framing */
+    res = a_mfrc522_read(handle, MFRC522_REG_BIT_FRAMING, &prev, 1);         /* read the bit framing */
     if (res != 0)                                                            /* check the result */
     {
-        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read bit framing failed */
+        handle->debug_print("mfrc522: read bit framing failed.\n");          /* read the bit framing failed */
         
         return 1;                                                            /* return error */
     }
-    *align = (mfrc522_rx_align_t)((prev >> 4) & 0x07);                       /* get the align */
+    *align = (mfrc522_rx_align_t)((prev >> 4) & 0x07);                       /* get align */
     
     return 0;                                                                /* success return 0 */
 }
@@ -5221,7 +5221,7 @@ uint8_t mfrc522_set_parity_disable(mfrc522_handle_t *handle, mfrc522_bool_t enab
         return 1;                                                    /* return error */
     }
     prev &= ~(1 << 4);                                               /* clear the settings */
-    prev |= enable << 4;                                             /* set the enable */
+    prev |= enable << 4;                                             /* set enable */
     res = a_mfrc522_write(handle, MFRC522_REG_MFRX, &prev, 1);       /* write mfrx */
     if (res != 0)                                                    /* check the result */
     {
@@ -7841,7 +7841,7 @@ uint8_t mfrc522_info(mfrc522_info_t *info)
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
     info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
     info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
-    info->driver_version = DRIVER_VERSION;                          /* set driver verison */
+    info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
 }

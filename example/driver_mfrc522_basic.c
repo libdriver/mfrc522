@@ -816,7 +816,7 @@ uint8_t mfrc522_basic_transceiver(uint8_t *in_buf, uint8_t in_len, uint8_t *out_
         
         return 0;
     }
-    /* anticollision cl1 */
+    /* anti collision cl1 */
     else if ((in_len == 2) && (in_buf[0] == 0x93) && (in_buf[1] == 0x20))
     {
         /* disable cypto1 on */
@@ -856,7 +856,7 @@ uint8_t mfrc522_basic_transceiver(uint8_t *in_buf, uint8_t in_len, uint8_t *out_
         
         return 0;
     }
-    /* anticollision cl2 */
+    /* anti collision cl2 */
     else if ((in_len == 2) && (in_buf[0] == 0x95) && (in_buf[1] == 0x20))
     {
         /* disable cypto1 on */
@@ -961,7 +961,7 @@ uint8_t mfrc522_basic_transceiver(uint8_t *in_buf, uint8_t in_len, uint8_t *out_
         
         return 0;
     }
-    /* the othes */
+    /* the others */
     else
     {
         /* transceiver */

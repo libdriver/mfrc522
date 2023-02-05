@@ -132,7 +132,7 @@ uint8_t mfrc522(uint8_t argc, char **argv)
         {"str", required_argument, NULL, 4},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     uint8_t addr = 0x00;
     uint64_t data = 0x00;
     uint8_t data_flag = 0;
@@ -640,7 +640,7 @@ int main(uint8_t argc, char **argv)
     }
     else
     {
-        mfrc522_interface_debug_print("mfrc522: unknow status code.\n");
+        mfrc522_interface_debug_print("mfrc522: unknown status code.\n");
     }
 
     return 0;
