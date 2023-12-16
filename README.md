@@ -14,11 +14,11 @@ LibDriver MFRC522 is the full function driver of MFRC522 launched by LibDriver.I
 
 LibDriver MFRC522 provides the full function driver of MFRC522, but it does not include MIFARE Classic, MIFARE Ultralight, NTAG21x and other drivers.
 
-MIFARE Classic driver can refer to https://github.com/hepingood/mifare_classic
+MIFARE Classic driver can refer to https://github.com/libdriver/mifare_classic.
 
-MIFARE Ultralight driver can refer to https://github.com/hepingood/mifare_ultralight
+MIFARE Ultralight driver can refer to https://github.com/libdriver/mifare_ultralight.
 
-NTAG21x drive can refer to https://github.com/hepingood/ntag21x
+NTAG21x drive can refer to https://github.com/libdriver/ntag21x.
 
 ### Table of Contents
 

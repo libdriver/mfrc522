@@ -14,11 +14,11 @@ Libdriver MFRC522는 LibDriver에서 출시한 MFRC522의 전체 기능 드라�
 
 LibDriver MFRC522는 MFRC522의 전체 기능 드라이버를 제공하지만 MIFARE Classic, MIFARE Ultralight, NTAG21x 및 기타 드라이버는 포함하지 않습니다.
 
-MIFARE Classic 드라이버는 https://github.com/hepingood/mifare_classic 을참조할 수 있습니다.
+MIFARE Classic 드라이버는 https://github.com/libdriver/mifare_classic 을참조할 수 있습니다.
 
-MIFARE Ultralight 드라이버는 https://github.com/hepingood/mifare_ultralight 를참조할 수 있습니다.
+MIFARE Ultralight 드라이버는 https://github.com/libdriver/mifare_ultralight 를참조할 수 있습니다.
 
-NTAG21x 드라이브는 https://github.com/hepingood/ntag21x 를참조할 수 있습니다.
+NTAG21x 드라이브는 https://github.com/libdriver/ntag21x 를참조할 수 있습니다.
 
 ### 콘텐츠
 
