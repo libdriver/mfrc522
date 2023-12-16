@@ -14,11 +14,11 @@ Libdriver MFRC522 ist der voll funktionsfähige Treiber von MFRC522, der von Lib
 
 LibDriver MFRC522 bietet den vollen Funktionstreiber von MFRC522, enthält jedoch nicht MIFARE Classic, MIFARE Ultralight, NTAG21x und andere Treiber.
 
-MIFARE Classic-Treiber finden Sie unter https://github.com/libdriver/mifare_classic.
+MIFARE Classic-Treiber finden Sie unter [https://github.com/libdriver/mifare_classic](https://github.com/libdriver/mifare_classic).
 
-MIFARE Ultralight-Treiber finden Sie unter https://github.com/libdriver/mifare_ultralight.
+MIFARE Ultralight-Treiber finden Sie unter [https://github.com/libdriver/mifare_ultralight](https://github.com/libdriver/mifare_ultralight).
 
-NTAG21x-Treiber finden Sie unter https://github.com/libdriver/ntag21x.
+NTAG21x-Treiber finden Sie unter [https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x).
 
 ### Inhaltsverzeichnis
 
