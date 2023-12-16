@@ -14,11 +14,11 @@ LibDriver MFRC522是LibDriver推出的MFRC522全功能驱动，该驱动提供�
 
 LibDriver MFRC522提供MFRC522的全功能驱动，但不包括MIFARE Classic，MIFARE Ultralight和NTAG21x等驱动。
 
-MIFARE Classic驱动可参考https://github.com/hepingood/mifare_classic
+MIFARE Classic驱动可参考https://github.com/libdriver/mifare_classic。
 
-MIFARE Ultralight驱动可参考https://github.com/hepingood/mifare_ultralight
+MIFARE Ultralight驱动可参考https://github.com/libdriver/mifare_ultralight。
 
-NTAG21x驱动可参考https://github.com/hepingood/ntag21x
+NTAG21x驱动可参考https://github.com/libdriver/ntag21x。
 
 ### 目录
 
