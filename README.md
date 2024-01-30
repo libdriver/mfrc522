@@ -18,7 +18,7 @@ MIFARE Classic driver can refer to [https://github.com/libdriver/mifare_classic]
 
 MIFARE Ultralight driver can refer to [https://github.com/libdriver/mifare_ultralight](https://github.com/libdriver/mifare_ultralight).
 
-NTAG21x drive can refer to [https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x).
+NTAG21x driver can refer to [https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x).
 
 ### Table of Contents
 

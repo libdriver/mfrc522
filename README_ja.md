@@ -18,7 +18,7 @@ MIFARE Classicドライバーは、[https://github.com/libdriver/mifare_classic]
 
 MIFARE Ultralightドライバーは、[https://github.com/libdriver/mifare_ultralight](https://github.com/libdriver/mifare_ultralight) を参照できます。
 
-NTAG21xドライブは[https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x) を参照できます。
+NTAG21x ドライバーは、[https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x) を参照できます。
 
 ### 目次
 

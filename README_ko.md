@@ -18,7 +18,7 @@ MIFARE Classic 드라이버는 [https://github.com/libdriver/mifare_classic](htt
 
 MIFARE Ultralight 드라이버는 [https://github.com/libdriver/mifare_ultralight](https://github.com/libdriver/mifare_ultralight) 를참조할 수 있습니다.
 
-NTAG21x 드라이브는 [https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x) 를참조할 수 있습니다.
+NTAG21x 드라이버는 [https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x)를 참조할 수 있습니다.
 
 ### 콘텐츠
 

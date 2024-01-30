@@ -18,7 +18,7 @@ MIFARE Classic-Treiber finden Sie unter [https://github.com/libdriver/mifare_cla
 
 MIFARE Ultralight-Treiber finden Sie unter [https://github.com/libdriver/mifare_ultralight](https://github.com/libdriver/mifare_ultralight).
 
-NTAG21x-Treiber finden Sie unter [https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x).
+Den NTAG21x-Treiber finden Sie unter [https://github.com/libdriver/ntag21x](https://github.com/libdriver/ntag21x).
 
 ### Inhaltsverzeichnis
 
