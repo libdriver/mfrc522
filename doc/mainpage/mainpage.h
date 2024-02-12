@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver MFRC522
- * @brief     libdriver mfrc522 is a full function driver of mfrc522 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver MFRC522 is a full function driver of MFRC522 and it can run in both MCU and Linux platform.
  * @version   1.0.0
  * @author    Shifeng Li
  *

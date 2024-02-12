@@ -57,6 +57,8 @@ NTAG21x驱动可参考[https://github.com/libdriver/ntag21x](https://github.com/
 
 ### 使用
 
+您可以参考/example目录下的编程范例完成适合您的驱动，如果您想要使用默认的编程范例，以下是它们的使用方法。
+
 #### example basic
 
 ```C
