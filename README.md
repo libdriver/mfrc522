@@ -53,7 +53,7 @@ NTAG21x driver can refer to [https://github.com/libdriver/ntag21x](https://githu
 
 Reference /interface IIC, SPI, UART platform independent template and finish your platform IIC, SPI, UART  driver.
 
-Add /src, /interface and /example to your project.
+Add the /src directory, the interface driver for your platform, and your own drivers to your project, if you want to use the default example drivers, add the /example directory to your project.
 
 ### Usage
 
