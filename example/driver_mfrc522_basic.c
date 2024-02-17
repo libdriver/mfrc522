@@ -999,7 +999,7 @@ uint8_t mfrc522_basic_generate_random(uint8_t buf[25])
         return 1;
     }
     
-    /* copy from mem to fifo to buffer */
+    /* copy from mem to fifo buffer */
     out_len = 25;
     res = mfrc522_transceiver(&gs_handle, MFRC522_COMMAND_MEM, &in_buf, 0, buf, &out_len, &err, 1000);
     if (res != 0)
