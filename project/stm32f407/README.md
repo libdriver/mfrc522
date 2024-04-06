@@ -8,6 +8,8 @@ Extern Oscillator: 8MHz.
 
 UART Pin: TX/RX PA9/PA10.
 
+UART2 Pin: TX/RX PA2/PA3.
+
 IIC Pin: SCL/SDA PB8/PB9.
 
 SPI Pin: SCK/MISO/MOSI/CS  PA5/PA6/PA7/PA4.
@@ -119,8 +121,8 @@ mfrc522: SPI interface MOSI connected to GPIOA PIN7.
 mfrc522: SPI interface CS connected to GPIOA PIN4.
 mfrc522: IIC interface SCL connected to GPIOB PIN8.
 mfrc522: IIC interface SDA connected to GPIOB PIN9.
-mfrc522: UART interface TX connected to GPIOA PIN2.
-mfrc522: UART interface RX connected to GPIOA PIN3.
+mfrc522: UART interface TX connected to GPIOA PIN3.
+mfrc522: UART interface RX connected to GPIOA PIN2.
 mfrc522: INT connected to GPIOB PIN0.
 mfrc522: RESET connected to GPIOA PIN8.
 ```

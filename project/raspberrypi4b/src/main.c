@@ -600,8 +600,8 @@ uint8_t mfrc522(uint8_t argc, char **argv)
         mfrc522_interface_debug_print("mfrc522: SPI interface CS connected to GPIO8(BCM).\n");
         mfrc522_interface_debug_print("mfrc522: IIC interface SCL connected to GPIO3(BCM).\n");
         mfrc522_interface_debug_print("mfrc522: IIC interface SDA connected to GPIO2(BCM).\n");
-        mfrc522_interface_debug_print("mfrc522: UART interface TX connected to GPIO14(BCM).\n");
-        mfrc522_interface_debug_print("mfrc522: UART interface RX connected to GPIO15(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: UART interface TX connected to GPIO15(BCM).\n");
+        mfrc522_interface_debug_print("mfrc522: UART interface RX connected to GPIO14(BCM).\n");
         mfrc522_interface_debug_print("mfrc522: INT connected to GPIO17(BCM).\n");
         mfrc522_interface_debug_print("mfrc522: RESET connected to GPIO27(BCM).\n");
         
