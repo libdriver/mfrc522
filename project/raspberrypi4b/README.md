@@ -156,8 +156,8 @@ mfrc522: SPI interface MOSI connected to GPIO10(BCM).
 mfrc522: SPI interface CS connected to GPIO8(BCM).
 mfrc522: IIC interface SCL connected to GPIO3(BCM).
 mfrc522: IIC interface SDA connected to GPIO2(BCM).
-mfrc522: UART interface TX connected to GPIO14(BCM).
-mfrc522: UART interface RX connected to GPIO15(BCM).
+mfrc522: UART interface TX connected to GPIO15(BCM).
+mfrc522: UART interface RX connected to GPIO14(BCM).
 mfrc522: INT connected to GPIO17(BCM).
 mfrc522: RESET connected to GPIO27(BCM).
 ```

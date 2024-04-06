@@ -635,8 +635,8 @@ uint8_t mfrc522(uint8_t argc, char **argv)
         mfrc522_interface_debug_print("mfrc522: SPI interface CS connected to GPIOA PIN4.\n");
         mfrc522_interface_debug_print("mfrc522: IIC interface SCL connected to GPIOB PIN8.\n");
         mfrc522_interface_debug_print("mfrc522: IIC interface SDA connected to GPIOB PIN9.\n");
-        mfrc522_interface_debug_print("mfrc522: UART interface TX connected to GPIOA PIN2.\n");
-        mfrc522_interface_debug_print("mfrc522: UART interface RX connected to GPIOA PIN3.\n");
+        mfrc522_interface_debug_print("mfrc522: UART interface TX connected to GPIOA PIN3.\n");
+        mfrc522_interface_debug_print("mfrc522: UART interface RX connected to GPIOA PIN2.\n");
         mfrc522_interface_debug_print("mfrc522: INT connected to GPIOB PIN0.\n");
         mfrc522_interface_debug_print("mfrc522: RESET connected to GPIOA PIN8.\n");
         
