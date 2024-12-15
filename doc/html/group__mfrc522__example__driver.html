@@ -1168,9 +1168,9 @@ Functions</h2></td></tr>
 <p>basic example calculate the crc </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*buf</td><td>points to a buffer </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>is the buffer length </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*crc</td><td>points to a crc buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*buf</td><td>pointer to a buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>buffer length </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*crc</td><td>pointer to a crc buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1232,7 +1232,7 @@ Functions</h2></td></tr>
 <p>basic example generate the random </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">*buf</td><td>points to a random buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*buf</td><td>pointer to a random buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1282,9 +1282,9 @@ Functions</h2></td></tr>
 <p>basic example init </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">interface</td><td>is the bus interface </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>is the iic device address </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*callback</td><td>points to a callback function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">interface</td><td>bus interface </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>iic device address </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*callback</td><td>pointer to a callback function </td></tr>
   </table>
   </dd>
 </dl>
@@ -1340,10 +1340,10 @@ Functions</h2></td></tr>
 <p>basic example transceiver </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*in_buf</td><td>points to a input buffer </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">in_len</td><td>is the input length </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*out_buf</td><td>points to a output buffer </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">*out_len</td><td>points to a output length buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*in_buf</td><td>pointer to a input buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">in_len</td><td>input length </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*out_buf</td><td>pointer to a output buffer </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">*out_len</td><td>pointer to a output length buffer </td></tr>
   </table>
   </dd>
 </dl>

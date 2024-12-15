@@ -1513,7 +1513,7 @@ Functions</h2></td></tr>
 <p>close the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1551,7 +1551,7 @@ Functions</h2></td></tr>
 <p>flush the fifo </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1597,8 +1597,8 @@ Functions</h2></td></tr>
 <p>get the iic address pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr_pin</td><td>points to an address pin buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr_pin</td><td>pointer to an address pin buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1648,9 +1648,9 @@ Functions</h2></td></tr>
 <p>get the antenna driver status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">driver</td><td>is the antenna driver type </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">driver</td><td>antenna driver type </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1696,8 +1696,8 @@ Functions</h2></td></tr>
 <p>get the channel reception </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*reception</td><td>points to a channel reception buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*reception</td><td>pointer to a channel reception buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1743,8 +1743,8 @@ Functions</h2></td></tr>
 <p>get the clear temperature error status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1790,8 +1790,8 @@ Functions</h2></td></tr>
 <p>get the collision level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>points to a collision level buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>pointer to a collision level buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1837,8 +1837,8 @@ Functions</h2></td></tr>
 <p>get the collision position </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*pos</td><td>points to a position buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*pos</td><td>pointer to a position buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1884,8 +1884,8 @@ Functions</h2></td></tr>
 <p>get the collision position not valid bit status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1931,8 +1931,8 @@ Functions</h2></td></tr>
 <p>get the command </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*command</td><td>points to a set command buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*command</td><td>pointer to a set command buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1978,8 +1978,8 @@ Functions</h2></td></tr>
 <p>get the contactless uart input </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*input</td><td>points to a contactless uart input buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*input</td><td>pointer to a contactless uart input buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2025,8 +2025,8 @@ Functions</h2></td></tr>
 <p>get the crc </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*crc</td><td>points to a crc buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*crc</td><td>pointer to a crc buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2072,8 +2072,8 @@ Functions</h2></td></tr>
 <p>get the crc msb first </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2119,8 +2119,8 @@ Functions</h2></td></tr>
 <p>get the crc preset </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*preset</td><td>points to a crc preset buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*preset</td><td>pointer to a crc preset buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2166,8 +2166,8 @@ Functions</h2></td></tr>
 <p>get the cwgsn </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>points to a param buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>pointer to a param buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2213,8 +2213,8 @@ Functions</h2></td></tr>
 <p>get the cwgsp </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>ponts to a param buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>pointer to a param buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2260,8 +2260,8 @@ Functions</h2></td></tr>
 <p>get the error </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*err</td><td>points to an error buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*err</td><td>pointer to an error buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2313,9 +2313,9 @@ Functions</h2></td></tr>
 <p>get the fifo data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*data</td><td>points to a data buffer </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>is the data length </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*data</td><td>pointer to a data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>data length </td></tr>
   </table>
   </dd>
 </dl>
@@ -2362,8 +2362,8 @@ Functions</h2></td></tr>
 <p>get the fifo level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>points to a level buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>pointer to a level buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2409,8 +2409,8 @@ Functions</h2></td></tr>
 <p>get the fix iq status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2456,8 +2456,8 @@ Functions</h2></td></tr>
 <p>get the force 100 ask status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2503,8 +2503,8 @@ Functions</h2></td></tr>
 <p>get the iic high speed status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2550,8 +2550,8 @@ Functions</h2></td></tr>
 <p>get the chip interface </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*interface</td><td>points to a chip interface buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*interface</td><td>pointer to a chip interface buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2601,9 +2601,9 @@ Functions</h2></td></tr>
 <p>get the interrupt1 status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>is the interrupt1 type </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>interrupt1 type </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2649,8 +2649,8 @@ Functions</h2></td></tr>
 <p>get the interrupt1 pin invert status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2696,8 +2696,8 @@ Functions</h2></td></tr>
 <p>get the interrupt1 status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>points to a status buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>pointer to a status buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2749,9 +2749,9 @@ Functions</h2></td></tr>
 <p>get the interrupt2 status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>is the interrupt2 type </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>interrupt2 type </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2797,8 +2797,8 @@ Functions</h2></td></tr>
 <p>get the interrupt2 status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>points to a status buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>pointer to a status buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2844,8 +2844,8 @@ Functions</h2></td></tr>
 <p>get the interrupt pin type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*type</td><td>points to an interrupt pin type buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*type</td><td>pointer to an interrupt pin type buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2891,8 +2891,8 @@ Functions</h2></td></tr>
 <p>get the mfin polarity </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*polarity</td><td>points to a mfin polarity buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*polarity</td><td>pointer to a mfin polarity buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2938,8 +2938,8 @@ Functions</h2></td></tr>
 <p>get the mfout input </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*input</td><td>points to a mfout input buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*input</td><td>pointer to a mfout input buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2985,8 +2985,8 @@ Functions</h2></td></tr>
 <p>get the min level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>points to a min level buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>pointer to a min level buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3032,8 +3032,8 @@ Functions</h2></td></tr>
 <p>get the modem state </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*state</td><td>points to a modem state buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*state</td><td>pointer to a modem state buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3079,8 +3079,8 @@ Functions</h2></td></tr>
 <p>get the modgsn </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>points to a param buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>pointer to a param buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3126,8 +3126,8 @@ Functions</h2></td></tr>
 <p>get the modgsp </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>points to a param buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*n</td><td>pointer to a param buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3173,8 +3173,8 @@ Functions</h2></td></tr>
 <p>get the modulation invert status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3220,8 +3220,8 @@ Functions</h2></td></tr>
 <p>get the modulation width </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*width</td><td>points to a modulation width buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*width</td><td>pointer to a modulation width buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3267,8 +3267,8 @@ Functions</h2></td></tr>
 <p>get the parity disable status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3314,8 +3314,8 @@ Functions</h2></td></tr>
 <p>get power down status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3361,8 +3361,8 @@ Functions</h2></td></tr>
 <p>get the analog part of the receiver status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3408,8 +3408,8 @@ Functions</h2></td></tr>
 <p>get the rx align </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*align</td><td>points to a rx align buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*align</td><td>pointer to a rx align buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3455,8 +3455,8 @@ Functions</h2></td></tr>
 <p>get the rx crc generation status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3502,8 +3502,8 @@ Functions</h2></td></tr>
 <p>get the rx gain </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*gain</td><td>points to an rx gain buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*gain</td><td>pointer to an rx gain buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3549,8 +3549,8 @@ Functions</h2></td></tr>
 <p>get the rx last bits </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*bits</td><td>points to a bits buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*bits</td><td>pointer to a bits buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3596,8 +3596,8 @@ Functions</h2></td></tr>
 <p>get the rx multiple status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3643,8 +3643,8 @@ Functions</h2></td></tr>
 <p>get the rx no error status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3690,8 +3690,8 @@ Functions</h2></td></tr>
 <p>get the rx speed </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*speed</td><td>points to an rx speed buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*speed</td><td>pointer to an rx speed buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3737,8 +3737,8 @@ Functions</h2></td></tr>
 <p>get the rx wait </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>points to an rx wait buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>pointer to an rx wait buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3790,9 +3790,9 @@ Functions</h2></td></tr>
 <p>get the serial speed </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*t0</td><td>points to a speed parm0 buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*t1</td><td>points to a speed parm1 buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*t0</td><td>pointer to a speed parm0 buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*t1</td><td>pointer to a speed parm1 buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3838,8 +3838,8 @@ Functions</h2></td></tr>
 <p>get the status1 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>points to a status buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>pointer to a status buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3885,8 +3885,8 @@ Functions</h2></td></tr>
 <p>get the status2 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>points to a status buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*status</td><td>pointer to a status buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3932,8 +3932,8 @@ Functions</h2></td></tr>
 <p>get the timer auto status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -3979,8 +3979,8 @@ Functions</h2></td></tr>
 <p>get the timer auto restart status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4026,8 +4026,8 @@ Functions</h2></td></tr>
 <p>get the timer constant reception </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>points to a reception buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>pointer to a reception buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4073,8 +4073,8 @@ Functions</h2></td></tr>
 <p>get the timer constant sync </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>points to a sync buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>pointer to a sync buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4120,8 +4120,8 @@ Functions</h2></td></tr>
 <p>get the timer counter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*cnt</td><td>points to a counter buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*cnt</td><td>pointer to a counter buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4167,8 +4167,8 @@ Functions</h2></td></tr>
 <p>get the timer gated mode </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*mode</td><td>points to a timer gated mode buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*mode</td><td>pointer to a timer gated mode buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4214,8 +4214,8 @@ Functions</h2></td></tr>
 <p>get the timer prescal even status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4261,8 +4261,8 @@ Functions</h2></td></tr>
 <p>get the timer prescaler </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>points to a prescaler buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>pointer to a prescaler buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4308,8 +4308,8 @@ Functions</h2></td></tr>
 <p>get the timer reload </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*reload</td><td>points to a reload buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*reload</td><td>pointer to a reload buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4355,8 +4355,8 @@ Functions</h2></td></tr>
 <p>get the tx crc generation status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4402,8 +4402,8 @@ Functions</h2></td></tr>
 <p>get the tx input </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*input</td><td>points to a tx input buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*input</td><td>pointer to a tx input buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4449,8 +4449,8 @@ Functions</h2></td></tr>
 <p>get the tx last bits </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*bits</td><td>points to a bits buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*bits</td><td>pointer to a bits buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4496,8 +4496,8 @@ Functions</h2></td></tr>
 <p>get the tx speed </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*speed</td><td>points to a tx speed buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*speed</td><td>pointer to a tx speed buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4543,8 +4543,8 @@ Functions</h2></td></tr>
 <p>get the tx wait </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>points to a wait buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*t</td><td>pointer to a wait buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4590,8 +4590,8 @@ Functions</h2></td></tr>
 <p>get the rf tx wait status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4637,8 +4637,8 @@ Functions</h2></td></tr>
 <p>get the value clear after coll status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4684,8 +4684,8 @@ Functions</h2></td></tr>
 <p>get the water level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>points to a level buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>pointer to a level buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -4721,7 +4721,7 @@ Functions</h2></td></tr>
 <p>get chip information </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>points to an mfrc522 info structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>pointer to an mfrc522 info structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -4755,7 +4755,7 @@ Functions</h2></td></tr>
 <p>initialize the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -4794,7 +4794,7 @@ Functions</h2></td></tr>
 <p>irq handler </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -4840,8 +4840,8 @@ Functions</h2></td></tr>
 <p>set the iic address pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr_pin</td><td>is the address pin </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr_pin</td><td>address pin </td></tr>
   </table>
   </dd>
 </dl>
@@ -4891,9 +4891,9 @@ Functions</h2></td></tr>
 <p>enable or disable the antenna driver </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">driver</td><td>is the antenna driver type </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">driver</td><td>antenna driver type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -4939,8 +4939,8 @@ Functions</h2></td></tr>
 <p>set the channel reception </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">reception</td><td>is the channel reception </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reception</td><td>channel reception </td></tr>
   </table>
   </dd>
 </dl>
@@ -4986,8 +4986,8 @@ Functions</h2></td></tr>
 <p>enable or disable clear temperature error </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5033,8 +5033,8 @@ Functions</h2></td></tr>
 <p>set the collision level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>is the collision level </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>collision level </td></tr>
   </table>
   </dd>
 </dl>
@@ -5081,8 +5081,8 @@ Functions</h2></td></tr>
 <p>set the command </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>is the set command </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>set command </td></tr>
   </table>
   </dd>
 </dl>
@@ -5128,8 +5128,8 @@ Functions</h2></td></tr>
 <p>set the contactless uart input </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>is the contactless uart input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>contactless uart input </td></tr>
   </table>
   </dd>
 </dl>
@@ -5175,8 +5175,8 @@ Functions</h2></td></tr>
 <p>enable or disable the crc msb first </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5222,8 +5222,8 @@ Functions</h2></td></tr>
 <p>set the crc preset </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">preset</td><td>is the crc preset </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">preset</td><td>crc preset </td></tr>
   </table>
   </dd>
 </dl>
@@ -5269,8 +5269,8 @@ Functions</h2></td></tr>
 <p>set the cwgsn </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>is the param </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>param </td></tr>
   </table>
   </dd>
 </dl>
@@ -5317,8 +5317,8 @@ Functions</h2></td></tr>
 <p>set the cwgsp </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>is the param </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>param </td></tr>
   </table>
   </dd>
 </dl>
@@ -5371,9 +5371,9 @@ Functions</h2></td></tr>
 <p>set the fifo data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*data</td><td>points to a data buffer </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>is the data length </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*data</td><td>pointer to a data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>data length </td></tr>
   </table>
   </dd>
 </dl>
@@ -5420,8 +5420,8 @@ Functions</h2></td></tr>
 <p>enable or disable fix iq </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5467,8 +5467,8 @@ Functions</h2></td></tr>
 <p>enable or disable force 100 ask </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5514,8 +5514,8 @@ Functions</h2></td></tr>
 <p>enable or disable force iic high speed </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5561,8 +5561,8 @@ Functions</h2></td></tr>
 <p>set the chip interface </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">interface</td><td>is the chip interface </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">interface</td><td>chip interface </td></tr>
   </table>
   </dd>
 </dl>
@@ -5612,9 +5612,9 @@ Functions</h2></td></tr>
 <p>enable or disable the interrupt1 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>is the interrupt1 type </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>interrupt1 type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5660,8 +5660,8 @@ Functions</h2></td></tr>
 <p>set the interrupt1 mark </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">mark</td><td>is the interrupt1 mark type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mark</td><td>interrupt1 mark type </td></tr>
   </table>
   </dd>
 </dl>
@@ -5707,8 +5707,8 @@ Functions</h2></td></tr>
 <p>enable or disable interrupt1 pin invert </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5760,9 +5760,9 @@ Functions</h2></td></tr>
 <p>enable or disable the interrupt2 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>is the interrupt2 type </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>interrupt2 type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -5808,8 +5808,8 @@ Functions</h2></td></tr>
 <p>set the interrupt2 mark </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">mark</td><td>is the interrupt2 mark type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mark</td><td>interrupt2 mark type </td></tr>
   </table>
   </dd>
 </dl>
@@ -5855,8 +5855,8 @@ Functions</h2></td></tr>
 <p>set the interrupt pin type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>is the interrupt pin type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>interrupt pin type </td></tr>
   </table>
   </dd>
 </dl>
@@ -5902,8 +5902,8 @@ Functions</h2></td></tr>
 <p>set the mfin polarity </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">polarity</td><td>is the mfin polarity </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">polarity</td><td>mfin polarity </td></tr>
   </table>
   </dd>
 </dl>
@@ -5949,8 +5949,8 @@ Functions</h2></td></tr>
 <p>set the mfout input </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>is the mfout input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>mfout input </td></tr>
   </table>
   </dd>
 </dl>
@@ -5996,8 +5996,8 @@ Functions</h2></td></tr>
 <p>enable or disable mifare crypto1 on </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6043,8 +6043,8 @@ Functions</h2></td></tr>
 <p>set the min level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>is the min level </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>min level </td></tr>
   </table>
   </dd>
 </dl>
@@ -6091,8 +6091,8 @@ Functions</h2></td></tr>
 <p>set the modgsn </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>is the param </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>param </td></tr>
   </table>
   </dd>
 </dl>
@@ -6139,8 +6139,8 @@ Functions</h2></td></tr>
 <p>set the modgsp </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>is the param </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>param </td></tr>
   </table>
   </dd>
 </dl>
@@ -6187,8 +6187,8 @@ Functions</h2></td></tr>
 <p>enable or disable the modulation invert </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6234,8 +6234,8 @@ Functions</h2></td></tr>
 <p>set the modulation width </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">width</td><td>is the modulation width </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">width</td><td>modulation width </td></tr>
   </table>
   </dd>
 </dl>
@@ -6281,8 +6281,8 @@ Functions</h2></td></tr>
 <p>enable or disable parity disable </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6328,8 +6328,8 @@ Functions</h2></td></tr>
 <p>enable or disable power down </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6375,8 +6375,8 @@ Functions</h2></td></tr>
 <p>enable or disable the analog part of the receiver </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6422,8 +6422,8 @@ Functions</h2></td></tr>
 <p>set the rx align </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">align</td><td>is the rx align </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">align</td><td>rx align </td></tr>
   </table>
   </dd>
 </dl>
@@ -6469,8 +6469,8 @@ Functions</h2></td></tr>
 <p>enable or disable the rx crc generation </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6516,8 +6516,8 @@ Functions</h2></td></tr>
 <p>set the rx gain </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>is the rx gain </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>rx gain </td></tr>
   </table>
   </dd>
 </dl>
@@ -6563,8 +6563,8 @@ Functions</h2></td></tr>
 <p>enable or disable rx multiple </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6610,8 +6610,8 @@ Functions</h2></td></tr>
 <p>enable or disable rx no error </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6657,8 +6657,8 @@ Functions</h2></td></tr>
 <p>set the rx speed </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">speed</td><td>is the rx speed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">speed</td><td>rx speed </td></tr>
   </table>
   </dd>
 </dl>
@@ -6704,8 +6704,8 @@ Functions</h2></td></tr>
 <p>set the rx wait </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>is the rx wait </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>rx wait </td></tr>
   </table>
   </dd>
 </dl>
@@ -6758,9 +6758,9 @@ Functions</h2></td></tr>
 <p>set the serial speed </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>is the speed parm0 </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t1</td><td>is the speed parm1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t0</td><td>speed parm0 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t1</td><td>speed parm1 </td></tr>
   </table>
   </dd>
 </dl>
@@ -6808,8 +6808,8 @@ Functions</h2></td></tr>
 <p>enable or disable timer auto </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6855,8 +6855,8 @@ Functions</h2></td></tr>
 <p>enable or disable timer auto restart </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -6902,8 +6902,8 @@ Functions</h2></td></tr>
 <p>set the timer constant reception </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>is the reception </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>reception </td></tr>
   </table>
   </dd>
 </dl>
@@ -6950,8 +6950,8 @@ Functions</h2></td></tr>
 <p>set the timer constant sync </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>is the sync </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>sync </td></tr>
   </table>
   </dd>
 </dl>
@@ -6998,8 +6998,8 @@ Functions</h2></td></tr>
 <p>set the timer gated mode </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>is the timer gated mode </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>timer gated mode </td></tr>
   </table>
   </dd>
 </dl>
@@ -7045,8 +7045,8 @@ Functions</h2></td></tr>
 <p>enable or disable timer prescal even </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -7092,8 +7092,8 @@ Functions</h2></td></tr>
 <p>set the timer prescaler </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>is the prescaler </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>prescaler </td></tr>
   </table>
   </dd>
 </dl>
@@ -7140,8 +7140,8 @@ Functions</h2></td></tr>
 <p>set the timer reload </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">reload</td><td>is the reload </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reload</td><td>reload param </td></tr>
   </table>
   </dd>
 </dl>
@@ -7187,8 +7187,8 @@ Functions</h2></td></tr>
 <p>enable or disable tx crc generation </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -7234,8 +7234,8 @@ Functions</h2></td></tr>
 <p>set the tx input </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>is the tx input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>tx input </td></tr>
   </table>
   </dd>
 </dl>
@@ -7281,8 +7281,8 @@ Functions</h2></td></tr>
 <p>set the tx last bits </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bits</td><td>is the set bits </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bits</td><td>set bits </td></tr>
   </table>
   </dd>
 </dl>
@@ -7329,8 +7329,8 @@ Functions</h2></td></tr>
 <p>set the tx speed </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">speed</td><td>is the tx speed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">speed</td><td>tx speed </td></tr>
   </table>
   </dd>
 </dl>
@@ -7376,8 +7376,8 @@ Functions</h2></td></tr>
 <p>set the tx wait </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>is the wait </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>wait </td></tr>
   </table>
   </dd>
 </dl>
@@ -7424,8 +7424,8 @@ Functions</h2></td></tr>
 <p>enable or disable the rf tx wait </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -7471,8 +7471,8 @@ Functions</h2></td></tr>
 <p>enable or disable value clear after coll </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -7518,8 +7518,8 @@ Functions</h2></td></tr>
 <p>set the water level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>is the water level </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>water level </td></tr>
   </table>
   </dd>
 </dl>
@@ -7556,7 +7556,7 @@ Functions</h2></td></tr>
 <p>start the transmission of data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -7592,7 +7592,7 @@ Functions</h2></td></tr>
 <p>start the timer </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -7628,7 +7628,7 @@ Functions</h2></td></tr>
 <p>stop the transmission of data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -7664,7 +7664,7 @@ Functions</h2></td></tr>
 <p>stop the timer </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -7746,14 +7746,14 @@ Functions</h2></td></tr>
 <p>mfrc522 transceiver </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an mfrc522 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>is the set command </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*in_buf</td><td>points to an input buffer </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">in_len</td><td>is the input length </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*out_buf</td><td>points to an output buffer </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">*out_len</td><td>points to an output length buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*err</td><td>points to an error buffer </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ms</td><td>is the timeout in ms </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an mfrc522 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">command</td><td>set command </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*in_buf</td><td>pointer to an input buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">in_len</td><td>input length </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*out_buf</td><td>pointer to an output buffer </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">*out_len</td><td>pointer to an output length buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*err</td><td>pointer to an error buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ms</td><td>timeout in ms </td></tr>
   </table>
   </dd>
 </dl>

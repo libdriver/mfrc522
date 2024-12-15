@@ -65,7 +65,7 @@ void EXTI0_IRQHandler(void)
 
 /**
  * @brief     gpio exti callback
- * @param[in] pin is the gpio pin
+ * @param[in] pin gpio pin
  * @note      none
  */
 void HAL_GPIO_EXTI_Callback(uint16_t pin)
@@ -81,7 +81,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin)
 
 /**
  * @brief     interface receive callback
- * @param[in] type is the irq type
+ * @param[in] type irq type
  * @note      none
  */
 static void a_callback(uint16_t type)
@@ -141,8 +141,8 @@ static void a_callback(uint16_t type)
 
 /**
  * @brief     mfrc522 full function
- * @param[in] argc is arg numbers
- * @param[in] **argv is the arg address
+ * @param[in] argc arg numbers
+ * @param[in] **argv arg address
  * @return    status code
  *             - 0 success
  *             - 1 run failed

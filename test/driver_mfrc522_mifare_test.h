@@ -59,8 +59,8 @@ uint8_t mfrc522_mifare_test_irq_handler(void);
 
 /**
  * @brief     mifare test
- * @param[in] interface is the bus interface
- * @param[in] addr is the iic device address
+ * @param[in] interface bus interface
+ * @param[in] addr iic device address
  * @return    status code
  *            - 0 success
  *            - 1 test failed

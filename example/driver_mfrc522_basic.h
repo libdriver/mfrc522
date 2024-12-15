@@ -120,9 +120,9 @@ uint8_t mfrc522_interrupt_irq_handler(void);
 
 /**
  * @brief     basic example init
- * @param[in] interface is the bus interface
- * @param[in] addr is the iic device address
- * @param[in] *callback points to a callback function
+ * @param[in] interface bus interface
+ * @param[in] addr iic device address
+ * @param[in] *callback pointer to a callback function
  * @return    status code
  *            - 0 success
  *            - 1 init failed
@@ -141,10 +141,10 @@ uint8_t mfrc522_basic_deinit(void);
 
 /**
  * @brief         basic example transceiver
- * @param[in]     *in_buf points to a input buffer
- * @param[in]     in_len is the input length
- * @param[out]    *out_buf points to a output buffer
- * @param[in,out] *out_len points to a output length buffer
+ * @param[in]     *in_buf pointer to a input buffer
+ * @param[in]     in_len input length
+ * @param[out]    *out_buf pointer to a output buffer
+ * @param[in,out] *out_len pointer to a output length buffer
  * @return        status code
  *                - 0 success
  *                - 1 transceiver failed
@@ -154,9 +154,9 @@ uint8_t mfrc522_basic_transceiver(uint8_t *in_buf, uint8_t in_len, uint8_t *out_
 
 /**
  * @brief      basic example calculate the crc
- * @param[in]  *buf points to a buffer
- * @param[in]  len is the buffer length
- * @param[out] *crc points to a crc buffer
+ * @param[in]  *buf pointer to a buffer
+ * @param[in]  len buffer length
+ * @param[out] *crc pointer to a crc buffer
  * @return     status code
  *             - 0 success
  *             - 1 calculate crc failed
@@ -166,7 +166,7 @@ uint8_t mfrc522_basic_calculate_crc(uint8_t *buf, uint8_t len, uint16_t *crc);
 
 /**
  * @brief      basic example generate the random
- * @param[out] *buf points to a random buffer
+ * @param[out] *buf pointer to a random buffer
  * @return     status code
  *             - 0 success
  *             - 1 generate random failed

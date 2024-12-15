@@ -68,7 +68,7 @@ uint8_t mfrc522_interface_reset_gpio_deinit(void)
 
 /**
  * @brief     interface reset gpio write
- * @param[in] value is the written value
+ * @param[in] value written value
  * @return    status code
  *            - 0 success
  *            - 1 reset gpio write failed
@@ -105,10 +105,10 @@ uint8_t mfrc522_interface_iic_deinit(void)
 
 /**
  * @brief      interface iic bus read
- * @param[in]  addr is the iic device write address
- * @param[in]  reg is the iic register address
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the length of the data buffer
+ * @param[in]  addr iic device write address
+ * @param[in]  reg iic register address
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -127,10 +127,10 @@ uint8_t mfrc522_interface_iic_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint
 
 /**
  * @brief     interface iic bus write
- * @param[in] addr is the iic device write address
- * @param[in] reg is the iic register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
+ * @param[in] addr iic device write address
+ * @param[in] reg iic register address
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len length of the data buffer
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -173,9 +173,9 @@ uint8_t mfrc522_interface_spi_deinit(void)
 
 /**
  * @brief      interface spi bus read
- * @param[in]  reg is the register address
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the length of data buffer
+ * @param[in]  reg register address
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len length of data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -188,9 +188,9 @@ uint8_t mfrc522_interface_spi_read(uint8_t reg, uint8_t *buf, uint16_t len)
 
 /**
  * @brief     interface spi bus write
- * @param[in] reg is the register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of data buffer
+ * @param[in] reg register address
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len length of data buffer
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -227,8 +227,8 @@ uint8_t mfrc522_interface_uart_deinit(void)
 
 /**
  * @brief      interface uart read
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the length of the data buffer
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -241,8 +241,8 @@ uint16_t mfrc522_interface_uart_read(uint8_t *buf, uint16_t len)
 
 /**
  * @brief     interface uart write
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len length of the data buffer
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -267,7 +267,7 @@ uint8_t mfrc522_interface_uart_flush(void)
 
 /**
  * @brief     interface delay ms
- * @param[in] ms
+ * @param[in] ms time
  * @note      none
  */
 void mfrc522_interface_delay_ms(uint32_t ms)
@@ -277,7 +277,7 @@ void mfrc522_interface_delay_ms(uint32_t ms)
 
 /**
  * @brief     interface print format data
- * @param[in] fmt is the format data
+ * @param[in] fmt format data
  * @note      none
  */
 void mfrc522_interface_debug_print(const char *const fmt, ...)
@@ -299,7 +299,7 @@ void mfrc522_interface_debug_print(const char *const fmt, ...)
 
 /**
  * @brief     interface receive callback
- * @param[in] type is the irq type
+ * @param[in] type irq type
  * @note      none
  */
 void mfrc522_interface_receive_callback(uint16_t type)

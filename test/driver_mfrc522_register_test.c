@@ -41,8 +41,8 @@ static mfrc522_handle_t gs_handle;        /**< mfrc522 handle */
 
 /**
  * @brief     register test
- * @param[in] interface is the bus interface
- * @param[in] addr is the iic device address
+ * @param[in] interface bus interface
+ * @param[in] addr iic device address
  * @return    status code
  *            - 0 success
  *            - 1 test failed
