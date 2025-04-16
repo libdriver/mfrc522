@@ -10,9 +10,9 @@
 
 The MFRC522 is a highly integrated reader/writer IC for contactless communication at 13.56 MHz. The MFRC522 reader supports ISO/IEC 14443 A/MIFARE and NTAG.The MFRC522’s internal transmitter is able to drive a reader/writer antenna designed to communicate with ISO/IEC 14443 A/MIFARE cards and transponders without additional active circuitry. The receiver module provides a robust and efficient implementation for demodulating and decoding signals from ISO/IEC 14443 A/MIFARE compatible cards and transponders. The digital module manages the complete ISO/IEC 14443 A framing and error detection (parity and CRC) functionality.
 
-LibDriver MFRC522 is the full function driver of MFRC522 launched by LibDriver.It provides the function of contactless communication, crc calculation, random generation and so on. LibDriver is MISRA compliant.
+LibDriver MFRC522 is a full-featured driver of MFRC522 launched by LibDriver.It provides the functions of contactless communication, crc calculation, random generation and so on. LibDriver is MISRA compliant.
 
-LibDriver MFRC522 provides the full function driver of MFRC522, but it does not include MIFARE Classic, MIFARE Ultralight, NTAG21x and other drivers.
+LibDriver MFRC522 provides the full-featured driver of MFRC522, but it does not include MIFARE Classic, MIFARE Ultralight, NTAG21x and other drivers.
 
 MIFARE Classic driver can refer to [https://github.com/libdriver/mifare_classic](https://github.com/libdriver/mifare_classic).
 
