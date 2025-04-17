@@ -1,3 +1,9 @@
+## 1.0.7 (2025-04-17)
+
+## Bug Fixes
+
+- change spi speed
+
 ## 1.0.6 (2025-04-16)
 
 ## Bug Fixes
