@@ -5520,7 +5520,7 @@ uint8_t mfrc522_set_rx_gain(mfrc522_handle_t *handle, mfrc522_rx_gain_t gain)
         return 1;                                                     /* return error */
     }
     prev &= ~(7 << 4);                                                /* clear the settings */
-    prev |= gain <<4;                                                 /* set the gain */
+    prev |= gain << 4;                                                /* set the gain */
     res = a_mfrc522_write(handle, MFRC522_REG_RFCFG, &prev, 1);       /* write rf cfg */
     if (res != 0)                                                     /* check the result */
     {
@@ -5698,7 +5698,7 @@ uint8_t mfrc522_set_modgsn(mfrc522_handle_t *handle, uint8_t n)
         return 1;                                                   /* return error */
     }
     prev &= ~(0xF << 0);                                            /* clear the settings */
-    prev |= n <<0;                                                  /* set the param */
+    prev |= n << 0;                                                 /* set the param */
     res = a_mfrc522_write(handle, MFRC522_REG_GSN, &prev, 1);       /* write gsn */
     if (res != 0)                                                   /* check the result */
     {
@@ -5787,7 +5787,7 @@ uint8_t mfrc522_set_cwgsp(mfrc522_handle_t *handle, uint8_t n)
         return 1;                                                   /* return error */
     }
     prev &= ~(0x3F << 0);                                           /* clear the settings */
-    prev |= n <<0;                                                  /* set the param */
+    prev |= n << 0;                                                 /* set the param */
     res = a_mfrc522_write(handle, MFRC522_REG_CWGSP, &prev, 1);     /* write cwgsp */
     if (res != 0)                                                   /* check the result */
     {
@@ -5876,7 +5876,7 @@ uint8_t mfrc522_set_modgsp(mfrc522_handle_t *handle, uint8_t n)
         return 1;                                                    /* return error */
     }
     prev &= ~(0x3F << 0);                                            /* clear the settings */
-    prev |= n <<0;                                                   /* set the param */
+    prev |= n << 0;                                                  /* set the param */
     res = a_mfrc522_write(handle, MFRC522_REG_MODGSP, &prev, 1);     /* write modgsp */
     if (res != 0)                                                    /* check the result */
     {

@@ -4511,7 +4511,7 @@ $(function(){initNavTree('driver__mfrc522_8c_source.html','',''); });
 <div class="line"><a id="l05520" name="l05520"></a><span class="lineno"> 5520</span>        <span class="keywordflow">return</span> 1;                                                     <span class="comment">/* return error */</span></div>
 <div class="line"><a id="l05521" name="l05521"></a><span class="lineno"> 5521</span>    }</div>
 <div class="line"><a id="l05522" name="l05522"></a><span class="lineno"> 5522</span>    prev &amp;= ~(7 &lt;&lt; 4);                                                <span class="comment">/* clear the settings */</span></div>
-<div class="line"><a id="l05523" name="l05523"></a><span class="lineno"> 5523</span>    prev |= gain &lt;&lt;4;                                                 <span class="comment">/* set the gain */</span></div>
+<div class="line"><a id="l05523" name="l05523"></a><span class="lineno"> 5523</span>    prev |= gain &lt;&lt; 4;                                                <span class="comment">/* set the gain */</span></div>
 <div class="line"><a id="l05524" name="l05524"></a><span class="lineno"> 5524</span>    res = a_mfrc522_write(handle, <a class="code hl_define" href="driver__mfrc522_8c.html#a92bdb78dadc7d54911b82a28237e7d42">MFRC522_REG_RFCFG</a>, &amp;prev, 1);       <span class="comment">/* write rf cfg */</span></div>
 <div class="line"><a id="l05525" name="l05525"></a><span class="lineno"> 5525</span>    <span class="keywordflow">if</span> (res != 0)                                                     <span class="comment">/* check the result */</span></div>
 <div class="line"><a id="l05526" name="l05526"></a><span class="lineno"> 5526</span>    {</div>
@@ -4651,7 +4651,7 @@ $(function(){initNavTree('driver__mfrc522_8c_source.html','',''); });
 <div class="line"><a id="l05698" name="l05698"></a><span class="lineno"> 5698</span>        <span class="keywordflow">return</span> 1;                                                   <span class="comment">/* return error */</span></div>
 <div class="line"><a id="l05699" name="l05699"></a><span class="lineno"> 5699</span>    }</div>
 <div class="line"><a id="l05700" name="l05700"></a><span class="lineno"> 5700</span>    prev &amp;= ~(0xF &lt;&lt; 0);                                            <span class="comment">/* clear the settings */</span></div>
-<div class="line"><a id="l05701" name="l05701"></a><span class="lineno"> 5701</span>    prev |= n &lt;&lt;0;                                                  <span class="comment">/* set the param */</span></div>
+<div class="line"><a id="l05701" name="l05701"></a><span class="lineno"> 5701</span>    prev |= n &lt;&lt; 0;                                                 <span class="comment">/* set the param */</span></div>
 <div class="line"><a id="l05702" name="l05702"></a><span class="lineno"> 5702</span>    res = a_mfrc522_write(handle, <a class="code hl_define" href="driver__mfrc522_8c.html#a532e3a5487383f7b0c688f254570a707">MFRC522_REG_GSN</a>, &amp;prev, 1);       <span class="comment">/* write gsn */</span></div>
 <div class="line"><a id="l05703" name="l05703"></a><span class="lineno"> 5703</span>    <span class="keywordflow">if</span> (res != 0)                                                   <span class="comment">/* check the result */</span></div>
 <div class="line"><a id="l05704" name="l05704"></a><span class="lineno"> 5704</span>    {</div>
@@ -4721,7 +4721,7 @@ $(function(){initNavTree('driver__mfrc522_8c_source.html','',''); });
 <div class="line"><a id="l05787" name="l05787"></a><span class="lineno"> 5787</span>        <span class="keywordflow">return</span> 1;                                                   <span class="comment">/* return error */</span></div>
 <div class="line"><a id="l05788" name="l05788"></a><span class="lineno"> 5788</span>    }</div>
 <div class="line"><a id="l05789" name="l05789"></a><span class="lineno"> 5789</span>    prev &amp;= ~(0x3F &lt;&lt; 0);                                           <span class="comment">/* clear the settings */</span></div>
-<div class="line"><a id="l05790" name="l05790"></a><span class="lineno"> 5790</span>    prev |= n &lt;&lt;0;                                                  <span class="comment">/* set the param */</span></div>
+<div class="line"><a id="l05790" name="l05790"></a><span class="lineno"> 5790</span>    prev |= n &lt;&lt; 0;                                                 <span class="comment">/* set the param */</span></div>
 <div class="line"><a id="l05791" name="l05791"></a><span class="lineno"> 5791</span>    res = a_mfrc522_write(handle, <a class="code hl_define" href="driver__mfrc522_8c.html#a1d8c8487476394d8600c4cc1e915721f">MFRC522_REG_CWGSP</a>, &amp;prev, 1);     <span class="comment">/* write cwgsp */</span></div>
 <div class="line"><a id="l05792" name="l05792"></a><span class="lineno"> 5792</span>    <span class="keywordflow">if</span> (res != 0)                                                   <span class="comment">/* check the result */</span></div>
 <div class="line"><a id="l05793" name="l05793"></a><span class="lineno"> 5793</span>    {</div>
@@ -4791,7 +4791,7 @@ $(function(){initNavTree('driver__mfrc522_8c_source.html','',''); });
 <div class="line"><a id="l05876" name="l05876"></a><span class="lineno"> 5876</span>        <span class="keywordflow">return</span> 1;                                                    <span class="comment">/* return error */</span></div>
 <div class="line"><a id="l05877" name="l05877"></a><span class="lineno"> 5877</span>    }</div>
 <div class="line"><a id="l05878" name="l05878"></a><span class="lineno"> 5878</span>    prev &amp;= ~(0x3F &lt;&lt; 0);                                            <span class="comment">/* clear the settings */</span></div>
-<div class="line"><a id="l05879" name="l05879"></a><span class="lineno"> 5879</span>    prev |= n &lt;&lt;0;                                                   <span class="comment">/* set the param */</span></div>
+<div class="line"><a id="l05879" name="l05879"></a><span class="lineno"> 5879</span>    prev |= n &lt;&lt; 0;                                                  <span class="comment">/* set the param */</span></div>
 <div class="line"><a id="l05880" name="l05880"></a><span class="lineno"> 5880</span>    res = a_mfrc522_write(handle, <a class="code hl_define" href="driver__mfrc522_8c.html#aef56c68efe6d57313f894150d56ac748">MFRC522_REG_MODGSP</a>, &amp;prev, 1);     <span class="comment">/* write modgsp */</span></div>
 <div class="line"><a id="l05881" name="l05881"></a><span class="lineno"> 5881</span>    <span class="keywordflow">if</span> (res != 0)                                                    <span class="comment">/* check the result */</span></div>
 <div class="line"><a id="l05882" name="l05882"></a><span class="lineno"> 5882</span>    {</div>
