@@ -527,6 +527,7 @@ uint8_t mfrc522_init(mfrc522_handle_t *handle)
         
         goto exit_code;                                                      /* goto the exit code */
     }
+    handle->delay_ms(10);                                                    /* delay 10ms */
 
     res = a_mfrc522_read(handle, MFRC522_REG_COMMAND, &prev, 1);             /* read config */
     if (res != 0)                                                            /* check the result */
@@ -1043,22 +1044,26 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
     if (command == MFRC522_COMMAND_MF_AUTHENT)                                      /* if authentic */
     {
         wait_for = (1 << MFRC522_INTERRUPT_IDLE) | 
-                   (1 << MFRC522_INTERRUPT_TIMER);                                  /* if idle && timer */
+                   (1 << MFRC522_INTERRUPT_TIMER) |
+                   (1 << MFRC522_INTERRUPT_ERR);                                    /* if idle && timer */
     }
     else if (command == MFRC522_COMMAND_TRANSCEIVE)                                 /* if transceiver */
     {
         wait_for = (1 << MFRC522_INTERRUPT_RX) | 
-                   (1 << MFRC522_INTERRUPT_TIMER);                                  /* if rx && timer */
+                   (1 << MFRC522_INTERRUPT_TIMER) |
+                   (1 << MFRC522_INTERRUPT_ERR);                                    /* if rx && timer */
     }
     else if (command == MFRC522_COMMAND_CALC_CRC)                                   /* if crc */
     {
         wait_for = (1 << MFRC522_INTERRUPT_CRC) | 
-                   (1 << MFRC522_INTERRUPT_TIMER);                                  /* if crc && timer */
+                   (1 << MFRC522_INTERRUPT_TIMER) |
+                   (1 << MFRC522_INTERRUPT_ERR);                                    /* if crc && timer */
     }
     else
     {
         wait_for = (1 << MFRC522_INTERRUPT_IDLE) | 
-                   (1 << MFRC522_INTERRUPT_TIMER);                                  /* if idle && timer */
+                   (1 << MFRC522_INTERRUPT_TIMER) |
+                   (1 << MFRC522_INTERRUPT_ERR);                                    /* if idle && timer */
     }
     timeout = ms;                                                                   /* set timeout */
     while (timeout != 0)                                                            /* check the timeout */
@@ -1097,14 +1102,6 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
         }
     }
     
-    /* check timer timeout */
-    if ((handle->irq_flag & ((1 << MFRC522_INTERRUPT_TIMER))) != 0)                 /* check the timer */
-    {
-        handle->debug_print("mfrc522: timer timeout.\n");                           /* timer timeout */
-        
-        return 7;                                                                   /* return error */
-    }
-    
     /* check error */
     if ((handle->irq_flag & ((1 << MFRC522_INTERRUPT_ERR))) != 0)                   /* check the error */
     {
@@ -1118,6 +1115,14 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
         handle->debug_print("mfrc522: find error.\n");                              /* find error */
         
         return 8;                                                                   /* return error */
+    }
+    
+    /* check timer timeout */
+    if ((handle->irq_flag & ((1 << MFRC522_INTERRUPT_TIMER))) != 0)                 /* check the timer */
+    {
+        handle->debug_print("mfrc522: timer timeout.\n");                           /* timer timeout */
+        
+        return 7;                                                                   /* return error */
     }
     
     /* get the fifo */
@@ -1203,7 +1208,7 @@ uint8_t mfrc522_transceiver(mfrc522_handle_t *handle,
         
         return 1;                                                                   /* return error */
     }
-    *err = prev;                                                                    /* set the 0 */
+    *err = 0;                                                                       /* set the 0 */
     
     return 0;                                                                       /* success return 0 */
 }
@@ -1240,6 +1245,7 @@ uint8_t mfrc522_set_receiver_analog(mfrc522_handle_t *handle, mfrc522_bool_t ena
         
         return 1;                                                        /* return error */
     }
+    prev = prev & 0xE0;                                                  /* get valid part */
     prev &= ~(1 << 5);                                                   /* clear the settings */
     prev |= ((!enable) << 5) | MFRC522_COMMAND_NO_CHANGE;                /* set the bool */
     res = a_mfrc522_write(handle, MFRC522_REG_COMMAND, &prev, 1);        /* write config */
@@ -1322,6 +1328,7 @@ uint8_t mfrc522_set_power_down(mfrc522_handle_t *handle, mfrc522_bool_t enable)
         
         return 1;                                                        /* return error */
     }
+    prev = prev & 0xE0;                                                  /* get valid part */
     prev &= ~(1 << 4);                                                   /* clear the settings */
     prev |= (enable << 4) | MFRC522_COMMAND_NO_CHANGE;                   /* set the bool */
     res = a_mfrc522_write(handle, MFRC522_REG_COMMAND, &prev, 1);        /* write config */
@@ -2056,7 +2063,7 @@ uint8_t mfrc522_get_status2(mfrc522_handle_t *handle, uint8_t *status)
         
         return 1;                                                      /* return error */
     }
-    *status = prev & (1 << 3);                                         /* set the status */
+    *status = prev;                                                    /* set the status */
 
     return 0;                                                          /* success return 0 */
 }
